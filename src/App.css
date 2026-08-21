@@ -1,0 +1,366 @@
+/* Background Grid Pattern */
+.background-grid {
+  /* ========================================================
+     KONTROL MANUAL BACKGROUND GRID (Silakan ubah nilai di bawah ini):
+     ======================================================== */
+  --grid-lebar: 100%;
+  /* Lebar area grid (contoh: 100%, 1200px) */
+  --grid-tinggi: 100%;
+  /* Tinggi area grid (contoh: 100vh, 100%) */
+  --grid-geser-horizontal: 100px;
+  /* Kanan-kirikan motif grid (positif ke kanan, negatif ke kiri) */
+  --grid-geser-vertikal: 0px;
+  /* Atas-bawahin motif grid (positif ke bawah, negatif ke atas) */
+  --grid-skala: 800px;
+  /* Besar-kecilin kotak grid (default: 3600px) */
+  --grid-opacity: 0.10;
+  /* Transparansi grid (nilai antara 0 sampai 1, contoh: 0.5, 0.8) */
+  /* ======================================================== */
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--grid-lebar);
+  height: var(--grid-tinggi);
+  background-image: url('./assets/grid.png');
+  background-repeat: repeat;
+  background-size: var(--grid-skala) auto;
+  background-position: var(--grid-geser-horizontal) var(--grid-geser-vertikal);
+  z-index: -1;
+  /* Wajib ada agar berada di belakang konten tapi di atas warna body */
+  pointer-events: none;
+  opacity: var(--grid-opacity);
+}
+
+.app-container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Yellow Sun Glow in Top Right */
+.sun-glow {
+  /* ========================================================
+     KONTROL MANUAL BULATAN KUNING (Silakan ubah nilai di bawah ini):
+     ======================================================== */
+  --glow-lebar: 400px;
+  /* Besar-kecilin lebar bulatan kuning (contoh: 350px, 450px) */
+  --glow-tinggi: 400px;
+  /* Besar-kecilin tinggi bulatan kuning (contoh: 350px, 450px) */
+  --glow-geser-horizontal: 75px;
+  /* Kanan-kirikan bulatan (positif ke kanan, negatif ke kiri) */
+  --glow-geser-vertikal: -20px;
+  /* Atas-bawahin bulatan (positif ke bawah, negatif ke atas) */
+  --glow-rotasi: -40deg;
+  /* Putar bulatan kuning (contoh: 45deg, 90deg, 180deg, -45deg) */
+  /* ======================================================== */
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: var(--glow-lebar);
+  height: var(--glow-tinggi);
+  background-image: url('./assets/sun.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top right;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.95;
+  transform: translate(var(--glow-geser-horizontal), var(--glow-geser-vertikal)) rotate(var(--glow-rotasi));
+}
+
+/* Navbar */
+.navbar-wrapper {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  background: #ffffff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100%;
+  /* Menggunakan lebar penuh agar selalu proporsional */
+  margin: 0 auto;
+  padding: 12px 5%;
+  /* Menggunakan persentase jarak dari tepi layar agar laptop & monitor terlihat sama */
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.nav-name {
+  font-family: var(--font-poppins);
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--text-dark);
+  letter-spacing: -0.5px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+
+.nav-link {
+  font-family: var(--font-poppins);
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--text-dark);
+  opacity: 0.85;
+  transition: all 0.2s ease;
+  position: relative;
+  padding: 4px 0;
+}
+
+.nav-link:hover {
+  opacity: 1;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--text-dark);
+  transition: width 0.2s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Hero Section */
+.hero-section {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 40px;
+  flex-grow: 1;
+  padding: 24px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 620px;
+  text-align: left;
+}
+
+.hero-greet {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-poppins);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+
+.hero-greet img.wave-icon {
+  width: 40px;
+  /* Diperbesar dari 24px */
+  height: 40px;
+  /* Diperbesar dari 24px */
+}
+
+.hero-name {
+  font-family: var(--font-inter);
+  font-size: 64px;
+  font-weight: 900;
+  color: var(--text-dark);
+  text-transform: uppercase;
+  letter-spacing: -2px;
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+
+.hero-desc {
+  font-family: var(--font-poppins);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.hero-desc strong {
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border: 1.5px solid var(--text-dark);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-dark);
+  font-family: var(--font-poppins);
+  font-weight: 600;
+  font-size: 14px;
+  width: fit-content;
+  transition: all 0.2s ease;
+  margin-top: 10px;
+}
+
+.download-btn:hover {
+  background: var(--text-dark);
+  color: #ffffff;
+}
+
+.download-icon {
+  width: 16px;
+  height: 16px;
+  transition: filter 0.2s ease;
+}
+
+.download-btn:hover .download-icon {
+  filter: invert(1);
+}
+
+.hero-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  position: relative;
+}
+
+.profile-image-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-profile-img {
+  /* ========================================================
+     KONTROL MANUAL FOTO (Silakan ubah nilai di bawah ini):
+     ======================================================== */
+  --foto-lebar-maks: 500px;
+  /* Besar-kecilin lebar foto (contoh: 380px, 450px, 500px) */
+  --foto-tinggi-maks: 600px;
+  /* Besar-kecilin tinggi foto (contoh: 520px, 600px, 700px) */
+  --foto-geser-horizontal: 100px;
+  /* Kanan-kirikan foto (positif ke kanan, negatif ke kiri) */
+  --foto-geser-vertikal: 30px;
+  /* Atas-bawahin foto (positif ke bawah, negatif ke atas) */
+  /* ======================================================== */
+
+  width: 100%;
+  max-width: var(--foto-lebar-maks);
+  transform: translate(var(--foto-geser-horizontal), var(--foto-geser-vertikal));
+  max-height: var(--foto-tinggi-maks);
+  object-fit: contain;
+  /* Apply soft fade at the bottom */
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 0) 100%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 0) 100%);
+}
+
+/* Mobile Menu Toggle button (hidden by default on desktop) */
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  color: var(--text-dark);
+  z-index: 20;
+}
+
+/* Responsive design */
+@media (max-width: 992px) {
+  .hero-section {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding-top: 40px;
+    text-align: center;
+  }
+
+  .hero-left {
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .hero-name {
+    font-size: 52px;
+  }
+
+  .hero-right {
+    order: -1;
+    /* Place image on top on mobile */
+    height: auto;
+  }
+
+  .profile-image-container {
+    max-width: 300px;
+  }
+
+  .hero-profile-img {
+    max-height: 380px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 12px 20px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 250px;
+    height: 100vh;
+    background: #ffffff;
+    flex-direction: column;
+    padding: 80px 30px;
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.05);
+    transition: right 0.3s ease;
+    z-index: 15;
+    gap: 24px;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .hero-name {
+    font-size: 42px;
+  }
+}
