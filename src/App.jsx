@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import logoImg from './assets/circle.png'
 import helloImg from './assets/hello.png'
 import profileImg from './assets/me.png'
@@ -20,6 +20,32 @@ import './App.css'
 
 function App() {
   const [menuActive, setMenuActive] = useState(false);
+
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1, // Trigger when 10% of the element is visible
+    };
+
+    const handleIntersect = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal-visible');
+        } else {
+          entry.target.classList.remove('reveal-visible');
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(handleIntersect, observerOptions);
+    const elementsToObserve = document.querySelectorAll('.scroll-reveal');
+    elementsToObserve.forEach((el) => observer.observe(el));
+
+    return () => {
+      elementsToObserve.forEach((el) => observer.unobserve(el));
+    };
+  }, []);
 
   return (
     <>
@@ -54,7 +80,7 @@ function App() {
 
       <div className="app-container">
         {/* Hero Section */}
-        <main className="hero-section">
+        <main className="hero-section scroll-reveal">
           <div className="hero-left">
             <div className="hero-greet">
               Helo <img src={helloImg} className="wave-icon" alt="waving hand" /> I'm
@@ -83,7 +109,7 @@ function App() {
           <h2 className="section-title">EDUCATION</h2>
 
           <div className="education-list">
-            <div className="education-item">
+            <div className="education-item scroll-reveal">
               <div className="education-logo-wrapper">
                 <img src={smksLogo} alt="SMKS 11 Maret Logo" className="education-logo" />
               </div>
@@ -93,7 +119,7 @@ function App() {
               </p>
             </div>
 
-            <div className="education-item">
+            <div className="education-item scroll-reveal">
               <div className="education-logo-wrapper">
                 <img src={ubLogo} alt="Brawijaya University Logo" className="education-logo" />
               </div>
@@ -118,7 +144,7 @@ function App() {
             <div className="timeline-left-accent"></div>
 
             <div className="timeline-content">
-              <div className="timeline-item">
+              <div className="timeline-item scroll-reveal">
                 <div className="timeline-bullet"></div>
                 <div className="timeline-item-body">
                   <div className="timeline-item-header">
@@ -143,7 +169,7 @@ function App() {
                 </div>
               </div>
 
-              <div className="timeline-item">
+              <div className="timeline-item scroll-reveal">
                 <div className="timeline-bullet"></div>
                 <div className="timeline-item-body">
                   <div className="timeline-item-header">
@@ -167,7 +193,7 @@ function App() {
                 </div>
               </div>
 
-              <div className="timeline-item">
+              <div className="timeline-item scroll-reveal">
                 <div className="timeline-bullet"></div>
                 <div className="timeline-item-body">
                   <div className="timeline-item-header">
