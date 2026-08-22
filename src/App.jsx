@@ -16,6 +16,16 @@ import exp5 from './assets/IMG_3210 2.png'
 import exp6 from './assets/IMG-20250608-WA0003(1) 2.png'
 import exp7 from './assets/9d3c0082-a2c2-4f1c-8f20-2f69f7ebddf6 2.png'
 import exp8 from './assets/IMG_0427 2.png'
+import projectHealtyLife from './assets/Body (2).png'
+import xamppLogo from './assets/xampp.png'
+import phpLogo from './assets/php.png'
+import htmlLogo from './assets/html.png'
+import cssLogo from './assets/css.png'
+import figmaLogo from './assets/figma.png'
+import iphoneLogo from './assets/iphone.png'
+import iphone1Logo from './assets/iphone 1.png'
+import splashLogo from './assets/splash.png'
+import projectSanding from './assets/sanding.png'
 import './App.css'
 
 function App() {
@@ -219,6 +229,127 @@ function App() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section id="projects" className="projects-section">
+        <div className="projects-inner">
+          <h2 className="projects-title scroll-reveal">PROJECTS</h2>
+          <div className="projects-divider scroll-reveal"></div>
+
+          <div className="projects-list">
+            <div className="project-item scroll-reveal">
+              <div className="project-info">
+                <div className="project-header-container">
+                  <h3 className="project-item-title">WEBSITE HEALTY LIFE - EDUKASI KESEHATAN</h3>
+                  <span className="project-badge">Website</span>
+                </div>
+                
+                <p className="project-desc">
+                  Developed the Healthy Life website as a health education platform providing information on sleep quality, healthy eating habits, and healthy lifestyle practices. Designed and implemented website features to present educational content in a structured manner, improve users' access to health information, and enhance the overall user experience through an intuitive and informative interface.
+                </p>
+
+                <div className="project-footer">
+                  <div className="project-tech-icons">
+                    <div className="tech-icon-wrapper">
+                      <img src={xamppLogo} alt="XAMPP" className="tech-icon" />
+                    </div>
+                    <div className="tech-icon-wrapper">
+                      <img src={phpLogo} alt="PHP" className="tech-icon" />
+                    </div>
+                    <div className="tech-icon-wrapper">
+                      <img src={htmlLogo} alt="HTML5" className="tech-icon" />
+                    </div>
+                    <div className="tech-icon-wrapper">
+                      <img src={cssLogo} alt="CSS3" className="tech-icon" />
+                    </div>
+                    <div className="tech-icon-wrapper">
+                      <img src={figmaLogo} alt="Figma" className="tech-icon" />
+                    </div>
+                  </div>
+
+                  <a href="#" target="_blank" rel="noopener noreferrer" className="live-demo-badge-inline">
+                    Live Demo <span className="demo-arrow">↗</span>
+                  </a>
+                </div>
+              </div>
+
+              <div className="project-visual">
+                <div className="project-image-wrapper">
+                  <img src={projectHealtyLife} alt="Healthy Life Website Preview" className="project-image" />
+                </div>
+              </div>
+            </div>
+
+            {/* Project 2: Lokara */}
+            <div className="project-item scroll-reveal">
+              <div className="project-visual">
+                <div className="project-image-wrapper lokara-wrapper">
+                  <img src={splashLogo} alt="Lokara Splash Background" className="project-image lokara-bg" />
+                  <img src={iphone1Logo} alt="Lokara Tilted iPhone" className="lokara-iphone-tilted" />
+                  <img src={iphoneLogo} alt="Lokara Straight iPhone" className="lokara-iphone-straight" />
+                </div>
+              </div>
+
+              <div className="project-info">
+                <div className="project-header-container">
+                  <h3 className="project-item-title">UI/UX MOBILE - LOKARA (LOKAL KARYA INDONESIA)</h3>
+                  <span className="project-badge">Mobile</span>
+                </div>
+                
+                <p className="project-desc">
+                  Designed a UX-driven e-commerce platform to support local businesses in promoting Indonesian cultural products to the international market. Developed an intuitive user journey, from product exploration and information discovery to the purchasing process, improving accessibility and enhancing the user experience in discovering and purchasing Indonesian cultural products.
+                </p>
+
+                <div className="project-footer">
+                  <div className="project-tech-icons">
+                    <div className="tech-icon-wrapper">
+                      <img src={figmaLogo} alt="Figma" className="tech-icon" />
+                    </div>
+                  </div>
+
+                  <a href="#" target="_blank" rel="noopener noreferrer" className="live-demo-badge-inline">
+                    Live Demo <span className="demo-arrow">↗</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Project 3: Sanding Solutions */}
+            <div className="project-item scroll-reveal">
+              <div className="project-info">
+                <div className="project-header-container">
+                  <h3 className="project-item-title">DESIGN UI/UX - PREMIUM INDUSTRIAL SANDING SOLUTIONS</h3>
+                  <span className="project-badge">Website</span>
+                </div>
+                
+                <p className="project-desc">
+                  Designed the Tiaga Pratama Persada company website as a digital platform to showcase grinding material products through comprehensive and informative content. Created an intuitive user interface and implemented a pre-order feature to simplify the ordering process, improve service accessibility, and support the company's digital transformation.
+                </p>
+
+                <div className="project-footer">
+                  <div className="project-tech-icons">
+                    <div className="tech-icon-wrapper">
+                      <img src={figmaLogo} alt="Figma" className="tech-icon" />
+                    </div>
+                  </div>
+
+                  <a href="#" target="_blank" rel="noopener noreferrer" className="live-demo-badge-inline">
+                    Live Demo <span className="demo-arrow">↗</span>
+                  </a>
+                </div>
+              </div>
+
+              <div className="project-visual">
+                <div className="project-image-wrapper">
+                  <img src={projectSanding} alt="Sanding Solutions Website Preview" className="project-image" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="projects-divider-bottom scroll-reveal"></div>
         </div>
       </section>
     </>
