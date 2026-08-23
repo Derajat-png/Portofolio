@@ -26,6 +26,14 @@ import iphoneLogo from './assets/iphone.png'
 import iphone1Logo from './assets/iphone 1.png'
 import splashLogo from './assets/splash.png'
 import projectSanding from './assets/sanding.png'
+import projectPasarNgalam from './assets/Ngalam.png'
+import mysqlLogo from './assets/Mysql.png'
+import javascriptLogo from './assets/Javascript.png'
+import laravelLogo from './assets/laravel.png'
+import projectUmkm from './assets/umkm.png'
+import projectIot from './assets/IOT.png'
+import tailwindLogo from './assets/Tailwind CSS.png'
+import reactLogo from './assets/react.svg'
 import './App.css'
 
 function App() {
@@ -239,6 +247,43 @@ function App() {
           <div className="projects-divider scroll-reveal"></div>
 
           <div className="projects-list">
+            {/* Project 1: Sentinel IoT */}
+            <div className="project-item visual-left scroll-reveal">
+              <div className="project-visual">
+                <div className="project-image-wrapper">
+                  <img src={projectIot} alt="Sentinel IoT Preview" className="project-image" />
+                </div>
+              </div>
+
+              <div className="project-info">
+                <div className="project-header-container">
+                  <h3 className="project-item-title">SENTINEL - IOT</h3>
+                  <span className="project-badge project-badge-iot">IOT</span>
+                </div>
+                
+                <p className="project-desc">
+                  Developed an IoT monitoring system to detect fire and gas leaks in real time by integrating sensors, a microcontroller, and a web-based dashboard. Implemented the Sugeno Fuzzy Logic algorithm to process sensor data and enable automated decision-making, improving safety and response to potential hazards.
+                </p>
+
+                <div className="project-footer">
+                  <div className="project-tech-icons">
+                    <div className="tech-icon-wrapper">
+                      <img src={laravelLogo} alt="Laravel" className="tech-icon" />
+                    </div>
+                    <div className="tech-icon-wrapper">
+                      <img src={mysqlLogo} alt="MySQL" className="tech-icon" />
+                    </div>
+                    <div className="tech-icon-wrapper">
+                      <img src={reactLogo} alt="ReactJS" className="tech-icon" />
+                    </div>
+                    <div className="tech-icon-wrapper">
+                      <img src={tailwindLogo} alt="Tailwind CSS" className="tech-icon" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div className="project-item scroll-reveal">
               <div className="project-info">
                 <div className="project-header-container">
@@ -276,14 +321,14 @@ function App() {
               </div>
 
               <div className="project-visual">
-                <div className="project-image-wrapper">
+                <div className="project-image-wrapper healty-life-wrapper">
                   <img src={projectHealtyLife} alt="Healthy Life Website Preview" className="project-image" />
                 </div>
               </div>
             </div>
 
             {/* Project 2: Lokara */}
-            <div className="project-item scroll-reveal">
+            <div className="project-item visual-left scroll-reveal">
               <div className="project-visual">
                 <div className="project-image-wrapper lokara-wrapper">
                   <img src={splashLogo} alt="Lokara Splash Background" className="project-image lokara-bg" />
@@ -344,6 +389,94 @@ function App() {
               <div className="project-visual">
                 <div className="project-image-wrapper">
                   <img src={projectSanding} alt="Sanding Solutions Website Preview" className="project-image" />
+                </div>
+              </div>
+            </div>
+
+            {/* Project 4: Pasar Ngalam */}
+            <div className="project-item visual-left scroll-reveal">
+              <div className="project-visual">
+                <div className="project-image-wrapper">
+                  <img src={projectPasarNgalam} alt="Pasar Ngalam Website Preview" className="project-image" />
+                </div>
+              </div>
+
+              <div className="project-info">
+                <div className="project-header-container">
+                  <h3 className="project-item-title">PASAR NGALAM - MARKETPLACE PLATFORM</h3>
+                  <span className="project-badge">Website</span>
+                </div>
+                
+                <p className="project-desc">
+                  Developed a marketplace platform to help local sellers market their products digitally through product management, catalog, and structured database features. Designed an efficient data management system to streamline product entry, organization, and information display while supporting well-organized digital transactions.
+                </p>
+
+                <div className="project-footer">
+                  <div className="project-tech-icons">
+                    <div className="tech-icon-wrapper">
+                      <img src={mysqlLogo} alt="MySQL" className="tech-icon" />
+                    </div>
+                    <div className="tech-icon-wrapper">
+                      <img src={javascriptLogo} alt="Javascript" className="tech-icon" />
+                    </div>
+                    <div className="tech-icon-wrapper">
+                      <img src={phpLogo} alt="PHP" className="tech-icon" />
+                    </div>
+                    <div className="tech-icon-wrapper">
+                      <img src={figmaLogo} alt="Figma" className="tech-icon" />
+                    </div>
+                    <div className="tech-icon-wrapper">
+                      <img src={laravelLogo} alt="Laravel" className="tech-icon" />
+                    </div>
+                  </div>
+
+                  <a href="#" target="_blank" rel="noopener noreferrer" className="live-demo-badge-inline">
+                    Live Demo <span className="demo-arrow">↗</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Project 5: Waroeng K-conk */}
+            <div className="project-item scroll-reveal">
+              <div className="project-info">
+                <div className="project-header-container">
+                  <h3 className="project-item-title">WEBSITE WAROENG K-CONK - UMKM KULINER</h3>
+                  <span className="project-badge">Website</span>
+                </div>
+                
+                <p className="project-desc">
+                  Developed a web platform for Waroeng K-Conk, a culinary local business (UMKM) specializing in authentic bebek bumbu hitam. Designed and implemented website features to display menus, facilitate ordering processes, and showcase culinary offerings to help the business digitalize its operations and reach a wider customer base.
+                </p>
+
+                <div className="project-footer">
+                  <div className="project-tech-icons">
+                    <div className="tech-icon-wrapper">
+                      <img src={xamppLogo} alt="XAMPP" className="tech-icon" />
+                    </div>
+                    <div className="tech-icon-wrapper">
+                      <img src={phpLogo} alt="PHP" className="tech-icon" />
+                    </div>
+                    <div className="tech-icon-wrapper">
+                      <img src={figmaLogo} alt="Figma" className="tech-icon" />
+                    </div>
+                    <div className="tech-icon-wrapper">
+                      <img src={htmlLogo} alt="HTML5" className="tech-icon" />
+                    </div>
+                    <div className="tech-icon-wrapper">
+                      <img src={cssLogo} alt="CSS3" className="tech-icon" />
+                    </div>
+                  </div>
+
+                  <a href="#" target="_blank" rel="noopener noreferrer" className="live-demo-badge-inline">
+                    Live Demo <span className="demo-arrow">↗</span>
+                  </a>
+                </div>
+              </div>
+
+              <div className="project-visual">
+                <div className="project-image-wrapper">
+                  <img src={projectUmkm} alt="Waroeng K-Conk Website Preview" className="project-image" />
                 </div>
               </div>
             </div>
