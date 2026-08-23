@@ -34,10 +34,52 @@ import projectUmkm from './assets/umkm.png'
 import projectIot from './assets/IOT.png'
 import tailwindLogo from './assets/Tailwind CSS.png'
 import reactLogo from './assets/react.svg'
+import vscIcon from './assets/vsc ub.png'
+import wordIcon from './assets/word ub.png'
+import figmaUbIcon from './assets/figma ub.png'
+import claudeIcon from './assets/claude ub.png'
+import githubUbIcon from './assets/github ub.png'
+import cssUbIcon from './assets/css ub.png'
+import htmlUbIcon from './assets/html ub.png'
+import reactUbIcon from './assets/react ub.png'
+import javaIcon from './assets/java ub.png'
+import jsUbIcon from './assets/js ub.png'
 import './App.css'
 
 function App() {
   const [menuActive, setMenuActive] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [progress, setProgress] = useState(0);
+  const [fadeOut, setFadeOut] = useState(false);
+
+  useEffect(() => {
+    if (loading) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [loading]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(interval);
+          setTimeout(() => {
+            setFadeOut(true);
+            setTimeout(() => {
+              setLoading(false);
+            }, 600); // Wait for transition fadeout (600ms)
+          }, 400); // Hold at 100%
+          return 100;
+        }
+        const next = prev + Math.floor(Math.random() * 12) + 6;
+        return next > 100 ? 100 : next;
+      });
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const observerOptions = {
@@ -67,6 +109,24 @@ function App() {
 
   return (
     <>
+      {loading && (
+        <div className={`loader-overlay ${fadeOut ? 'fade-out' : ''}`}>
+          <div className="loader-content">
+            <h1 className="loader-title">
+              {"My Portofolio".split("").map((char, index) => (
+                <span key={index} style={{ animationDelay: `${index * 0.08}s` }}>
+                  {char === " " ? "\u00A0" : char}
+                </span>
+              ))}
+            </h1>
+            <div className="loader-bar-container">
+              <div className="loader-bar" style={{ width: `${progress}%` }}></div>
+            </div>
+            <div className="loader-progress-text">{progress}%</div>
+          </div>
+        </div>
+      )}
+
       {/* Background Grid */}
       <div className="background-grid"></div>
 
@@ -485,6 +545,104 @@ function App() {
           <div className="projects-divider-bottom scroll-reveal"></div>
         </div>
       </section>
+
+      {/* Tools Section */}
+      <section id="tools" className="tools-section">
+        <div className="tools-inner">
+          <div className="tools-card scroll-reveal">
+            <div className="tools-content-wrapper">
+              <div className="tools-left">
+              <h2 className="tools-title-header">TOOLS<br/>SOFTWARE</h2>
+              <div className="tools-underline"></div>
+            </div>
+            
+            <div className="tools-right">
+              <div className="tools-grid">
+                {/* Visual Studio Code */}
+                <div className="tool-card-item">
+                  <div className="tool-icon-img-wrapper">
+                    <img src={vscIcon} alt="Visual Studio Code" className="tool-icon-img" />
+                  </div>
+                  <span className="tool-icon-label">Visual Studio Code</span>
+                </div>
+
+                {/* Microsoft Word */}
+                <div className="tool-card-item">
+                  <div className="tool-icon-img-wrapper">
+                    <img src={wordIcon} alt="Microsoft Word" className="tool-icon-img" />
+                  </div>
+                  <span className="tool-icon-label">Microsoft Word</span>
+                </div>
+
+                {/* Figma */}
+                <div className="tool-card-item">
+                  <div className="tool-icon-img-wrapper">
+                    <img src={figmaUbIcon} alt="Figma" className="tool-icon-img" />
+                  </div>
+                  <span className="tool-icon-label">FIGMA</span>
+                </div>
+
+                {/* AI Claude */}
+                <div className="tool-card-item">
+                  <div className="tool-icon-img-wrapper">
+                    <img src={claudeIcon} alt="AI Claude" className="tool-icon-img" />
+                  </div>
+                  <span className="tool-icon-label">AI Claude</span>
+                </div>
+
+                {/* GitHub */}
+                <div className="tool-card-item">
+                  <div className="tool-icon-img-wrapper">
+                    <img src={githubUbIcon} alt="GitHub" className="tool-icon-img" />
+                  </div>
+                  <span className="tool-icon-label">GITHUB</span>
+                </div>
+
+                {/* CSS */}
+                <div className="tool-card-item">
+                  <div className="tool-icon-img-wrapper">
+                    <img src={cssUbIcon} alt="CSS" className="tool-icon-img" />
+                  </div>
+                  <span className="tool-icon-label">CSS</span>
+                </div>
+
+                {/* HTML */}
+                <div className="tool-card-item">
+                  <div className="tool-icon-img-wrapper">
+                    <img src={htmlUbIcon} alt="HTML" className="tool-icon-img" />
+                  </div>
+                  <span className="tool-icon-label">HTML</span>
+                </div>
+
+                {/* ReactJS */}
+                <div className="tool-card-item">
+                  <div className="tool-icon-img-wrapper">
+                    <img src={reactUbIcon} alt="ReactJS" className="tool-icon-img" />
+                  </div>
+                  <span className="tool-icon-label">ReactJS</span>
+                </div>
+
+                {/* Java */}
+                <div className="tool-card-item">
+                  <div className="tool-icon-img-wrapper">
+                    <img src={javaIcon} alt="Java" className="tool-icon-img" />
+                  </div>
+                  <span className="tool-icon-label">JAVA</span>
+                </div>
+
+                {/* JavaScript */}
+                <div className="tool-card-item">
+                  <div className="tool-icon-img-wrapper">
+                    <img src={jsUbIcon} alt="JavaScript" className="tool-icon-img" />
+                  </div>
+                  <span className="tool-icon-label">Java Script</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     </>
   )
 }

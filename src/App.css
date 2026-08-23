@@ -670,8 +670,8 @@
 .scroll-reveal {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 1.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
@@ -1002,5 +1002,287 @@
 
   .tech-icon {
     height: 38px;
+  }
+}
+
+/* ==========================================
+   PORTFOLIO LOADER OVERLAY STYLES
+   ========================================== */
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #111212;
+  background-image: radial-gradient(circle at center, #1b1c1c 0%, #0F1010 100%);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0.6s;
+  opacity: 1;
+  visibility: visible;
+}
+
+.loader-overlay.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.05);
+}
+
+.loader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  text-align: center;
+  max-width: 90%;
+}
+
+/* Loader Title - Letter by Letter Animation */
+.loader-title {
+  font-family: var(--font-poppins);
+  font-size: 40px;
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.loader-title span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px) scale(0.8);
+  animation: letterFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
+}
+
+@keyframes letterFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Progress Bar Container */
+.loader-bar-container {
+  width: 260px;
+  height: 3px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.loader-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #ECC232, #a3e635);
+  border-radius: 4px;
+  box-shadow: 0 0 12px rgba(163, 230, 53, 0.6);
+  transition: width 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Progress Text */
+.loader-progress-text {
+  font-family: var(--font-inter);
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 2px;
+  animation: pulseProgress 1.5s infinite ease-in-out;
+}
+
+@keyframes pulseProgress {
+
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 576px) {
+  .loader-title {
+    font-size: 28px;
+    letter-spacing: 4px;
+  }
+
+  .loader-bar-container {
+    width: 200px;
+  }
+}
+
+/* ==========================================
+   TOOLS SECTION STYLES
+   ========================================== */
+.tools-section {
+  background-color: #1B1C1C;
+  /* Dark background matching projects */
+  padding: 80px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.tools-inner {
+  width: 100%;
+}
+
+.tools-card {
+  background-color: #F5F5F0;
+  /* Cream background matching design */
+  width: 100%;
+  border-radius: 30px;
+  /* Tweak this value manually to change the corner roundness */
+  padding: 110px 0;
+  /* Increase this padding value (e.g. 100px, 120px) to make the box taller */
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+}
+
+.tools-content-wrapper {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 180px;
+}
+
+.tools-left {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 200px;
+
+  /* POSITIONING CONTROLS (Tweak these manually to move the text block) */
+  margin-top: -160px;
+  /* UP / DOWN position (Increase to move down, decrease/negative to move up) */
+  margin-left: 0px;
+  /* LEFT / RIGHT position (Increase to move right, decrease to move left) */
+}
+
+.tools-title-header {
+  font-family: var(--font-inter);
+  font-weight: 900;
+  color: #000000;
+  line-height: 1.15;
+  letter-spacing: -1px;
+
+  /* SIZE CONTROL (Tweak this manually to resize the text) */
+  font-size: 50px;
+  /* TEXT SIZE (Increase to make larger, decrease to make smaller) */
+}
+
+.tools-underline {
+  width: 90%;
+  height: 4px;
+  background-color: #ECC232;
+  /* Yellow underline */
+  margin-top: 10px;
+}
+
+.tools-right {
+  flex-grow: 1;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 70px 40px;
+  justify-items: center;
+}
+
+.tool-card-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tool-card-item:hover {
+  transform: translateY(-5px);
+}
+
+.tool-icon-img-wrapper {
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.tool-card-item:hover .tool-icon-img-wrapper {
+  transform: scale(1.12);
+}
+
+.tool-icon-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.tool-icon-label {
+  font-family: var(--font-poppins);
+  font-size: 15px;
+  font-weight: 700;
+  color: #000000;
+  letter-spacing: -0.2px;
+  line-height: 1.25;
+}
+
+/* Responsive Styles for Tools */
+@media (max-width: 992px) {
+  .tools-content-wrapper {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .tools-card {
+    padding: 40px 0;
+  }
+
+  .tools-left {
+    align-items: center;
+  }
+
+  .tools-underline {
+    margin: 10px auto 0 auto;
+    width: 60px;
+  }
+
+  .tools-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .tools-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 12px;
+  }
+
+  .tools-title-header {
+    font-size: 28px;
   }
 }
