@@ -44,6 +44,16 @@ import htmlUbIcon from './assets/html ub.png'
 import reactUbIcon from './assets/react ub.png'
 import javaIcon from './assets/java ub.png'
 import jsUbIcon from './assets/js ub.png'
+import certUji from './assets/uji.png'
+import certMicrosoft from './assets/microsoft.png'
+import certHackathon from './assets/hackthon.png'
+import certUiux from './assets/uiux.png'
+import certIntern from './assets/intern.png'
+import certBem from './assets/bem.png'
+import certHmpsti from './assets/hmpsti ub.png'
+import certJava from './assets/java.png'
+import certApply from './assets/apply.png'
+import certUi from './assets/ui.png'
 import './App.css'
 
 function App() {
@@ -51,14 +61,15 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   const [fadeOut, setFadeOut] = useState(false);
+  const [selectedCert, setSelectedCert] = useState(null);
 
   useEffect(() => {
-    if (loading) {
+    if (loading || selectedCert) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
     }
-  }, [loading]);
+  }, [loading, selectedCert]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -106,6 +117,79 @@ function App() {
       elementsToObserve.forEach((el) => observer.unobserve(el));
     };
   }, []);
+
+  const certificates = [
+    {
+      title: "UI/UX Design Competition (CodeFest 002)",
+      issuer: "Universitas Sumatera Utara",
+      date: "2026",
+      image: certUiux,
+      id: "CodeFest002/UIUX/2026"
+    },
+    {
+      title: "Sertifikat Uji Kompetensi (TKJ)",
+      issuer: "SMK 11 Maret & PT. Shinwood Global Indonesia",
+      date: "2024",
+      image: certUji,
+      id: "73937/UKK/TKJ/2024"
+    },
+    {
+      title: "Microsoft Office Desktop Application",
+      issuer: "Trust Training Partners & Universitas Brawijaya",
+      date: "2025",
+      image: certMicrosoft,
+      id: "TTP/MOS/UB/2025"
+    },
+    {
+      title: "Hackathons & Datathons Tips & Tricks",
+      issuer: "Dicoding Indonesia",
+      date: "2026",
+      image: certHackathon,
+      id: "DICODING/HACKATHON/2026"
+    },
+    {
+      title: "Internship Completion Certificate",
+      issuer: "PT. Global Dimensi Metalindo",
+      date: "2023",
+      image: certIntern,
+      id: "GDM/INT/2023/08"
+    },
+    {
+      title: "Director General of Issue Analysis",
+      issuer: "BEM Fakultas Vokasi Universitas Brawijaya",
+      date: "2026",
+      image: certBem,
+      id: "BEMVOKASI/UB/DIRGEN/2026"
+    },
+    {
+      title: "Young Staff of Advokesma Department",
+      issuer: "HMPSTI Universitas Brawijaya",
+      date: "2024",
+      image: certHmpsti,
+      id: "HMPSTI/ADVOKESMA/2024"
+    },
+    {
+      title: "Introduction to Java Course",
+      issuer: "Sololearn",
+      date: "2024",
+      image: certJava,
+      id: "SOLOLEARN/JAVA/INTRO/2024"
+    },
+    {
+      title: "Digistar Connect Program",
+      issuer: "Digistar Club x GDGoC UB",
+      date: "2026",
+      image: certApply,
+      id: "DIGISTAR/GDGOC/2026"
+    },
+    {
+      title: "CAMP Future Ready Talks",
+      issuer: "Celerates CAMP",
+      date: "2026",
+      image: certUi,
+      id: "CELERATES/CAMP/FRT/2026"
+    }
+  ];
 
   return (
     <>
@@ -643,6 +727,53 @@ function App() {
         </div>
       </div>
     </section>
+
+    {/* Certification Section */}
+    <section id="certification" className="certification-section">
+      <div className="certification-inner">
+        <h2 className="certification-title scroll-reveal">CERTIFICATIONS</h2>
+        <div className="certification-divider scroll-reveal"></div>
+        
+        <div className="certifications-grid">
+          {certificates.map((cert, index) => (
+            <div key={index} className="cert-card-item scroll-reveal" onClick={() => setSelectedCert(cert)}>
+              <div className="cert-image-container">
+                <img src={cert.image} alt={cert.title} className="cert-card-img" />
+                <div className="cert-overlay">
+                  <span className="cert-zoom-icon">🔍 View Certificate</span>
+                </div>
+              </div>
+              <div className="cert-info">
+                <h3 className="cert-item-title">{cert.title}</h3>
+                <p className="cert-item-issuer">{cert.issuer}</p>
+                <div className="cert-meta">
+                  <span className="cert-item-date">{cert.date}</span>
+                  {cert.id && <span className="cert-item-id">ID: {cert.id}</span>}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Certification Zoom Lightbox Modal */}
+    {selectedCert && (
+      <div className="cert-modal-overlay" onClick={() => setSelectedCert(null)}>
+        <button className="cert-modal-close" onClick={() => setSelectedCert(null)}>✕</button>
+        <div className="cert-modal-content" onClick={(e) => e.stopPropagation()}>
+          <img src={selectedCert.image} alt={selectedCert.title} className="cert-modal-img" />
+          <div className="cert-modal-info">
+            <h3 className="cert-modal-title">{selectedCert.title}</h3>
+            <p className="cert-modal-issuer">{selectedCert.issuer}</p>
+            <div className="cert-modal-meta">
+              <span>Year: {selectedCert.date}</span>
+              {selectedCert.id && <span>Credential ID: {selectedCert.id}</span>}
+            </div>
+          </div>
+        </div>
+      </div>
+    )}
     </>
   )
 }
