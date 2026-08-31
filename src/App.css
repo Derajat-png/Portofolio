@@ -1771,3 +1771,17 @@
     font-size: 13.5px;
   }
 }
+
+/* ==========================================
+   SMOOTH SCROLL SECTION MARGINS
+   ========================================== */
+section[id],
+footer[id],
+.education-section,
+.experience-section,
+.projects-section,
+.tools-section,
+.certification-section,
+.site-footer {
+  scroll-margin-top: 36px;
+}

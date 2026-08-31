@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>CV - DERAJAT</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 18mm 18mm 18mm 18mm;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Times New Roman", Times, Georgia, serif;
+      color: #000000;
+      line-height: 1.35;
+      font-size: 10.5pt;
+      background: #ffffff;
+      -webkit-print-color-adjust: exact;
+    }
+
+    .page {
+      page-break-after: always;
+      position: relative;
+    }
+
+    .page:last-child {
+      page-break-after: auto;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
+    .name {
+      font-size: 18pt;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+    }
+
+    .contact-line {
+      font-size: 10pt;
+      margin-bottom: 3px;
+    }
+
+    .contact-line a {
+      color: #0000EE;
+      text-decoration: underline;
+    }
+
+    .location-line {
+      font-size: 10pt;
+    }
+
+    .summary {
+      text-align: justify;
+      margin-bottom: 12px;
+      font-size: 10pt;
+      line-height: 1.38;
+    }
+
+    /* Section */
+    .section {
+      margin-bottom: 11px;
+    }
+
+    .section-title {
+      font-size: 10.5pt;
+      font-weight: bold;
+      text-transform: uppercase;
+      border-bottom: 1.5px solid #000000;
+      padding-bottom: 2px;
+      margin-bottom: 6px;
+      letter-spacing: 0.3px;
+    }
+
+    .entry {
+      margin-bottom: 8px;
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .entry-title {
+      font-weight: bold;
+    }
+
+    .entry-location, .entry-date {
+      font-weight: bold;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .entry-subtitle-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2px;
+    }
+
+    .entry-subtitle {
+      font-style: italic;
+    }
+
+    .entry-desc {
+      font-size: 10pt;
+      text-align: justify;
+      line-height: 1.35;
+    }
+
+    /* Bullet lists */
+    .bullet-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .bullet-item {
+      position: relative;
+      padding-left: 14px;
+      margin-bottom: 4px;
+      font-size: 10pt;
+      text-align: justify;
+      line-height: 1.35;
+    }
+
+    .bullet-item::before {
+      content: "•";
+      position: absolute;
+      left: 2px;
+      font-weight: bold;
+    }
+
+    .bullet-item a {
+      color: #0000EE;
+      text-decoration: underline;
+    }
+
+    /* Skills Table */
+    .skills-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 4px;
+    }
+
+    .skills-table td {
+      padding: 2.5px 0;
+      vertical-align: top;
+      font-size: 10pt;
+      line-height: 1.35;
+    }
+
+    .skills-label {
+      width: 165px;
+      font-weight: normal;
+    }
+
+    .skills-sep {
+      width: 12px;
+      text-align: center;
+    }
+
+    .skills-value {
+      font-weight: normal;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PAGE 1 -->
+  <div class="page">
+    <div class="header">
+      <h1 class="name">DERAJAT</h1>
+      <div class="contact-line">
+        <a href="mailto:derajatminsyana2005@gmail.com">derajatminsyana2005@gmail.com</a> | 
+        <a href="https://www.linkedin.com/in/derajat" target="_blank">www.linkedin.com/in/derajat</a> | 
+        <a href="https://derajat.vercel.app" target="_blank">derajat.vercel.app</a> | 
+        <a href="tel:+6287818895273">+6287818895273</a>
+      </div>
+      <div class="location-line">Bekasi, Jawa Barat, Indonesia</div>
+    </div>
+
+    <p class="summary">
+      Mahasiswa D3 Teknologi Informasi Universitas Brawijaya yang berfokus pada Web Design dan Front End Developer. Berpengalaman dalam organisasi, kepanitiaan, serta kegiatan volunteer yang mengasah komunikasi dan koordinasi tim. Sosok yang cepat belajar, adaptif, dan termotivasi tinggi untuk berkembang di lingkungan kerja profesional.
+    </p>
+
+    <!-- PENDIDIKAN -->
+    <div class="section">
+      <h2 class="section-title">PENDIDIKAN</h2>
+      
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title">SMKS 11 MARET CIKARANG BARAT</span>
+          <span class="entry-location">Bekasi</span>
+        </div>
+        <div class="entry-subtitle-row">
+          <span><span class="entry-subtitle">Smk/Sederajat di Teknik Komputer dan Jaringan</span> | <strong>IPK: 82,44 / 100</strong></span>
+          <span class="entry-date">2021 - 2024</span>
+        </div>
+        <p class="entry-desc">
+          Mempelajari jaringan komputer, topologi LAN, MAN, dan WAN, serta praktik kabel LAN, fiber optic, Ubuntu Linux, dan hardware komputer.
+        </p>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title">UNIVERSITAS BRAWIJAYA</span>
+          <span class="entry-location">Malang</span>
+        </div>
+        <div class="entry-subtitle-row">
+          <span><span class="entry-subtitle">Diploma III di Teknologi Informasi</span> | <strong>IPK: 3,28 / 4,0</strong></span>
+          <span class="entry-date">2024 - Sekarang</span>
+        </div>
+        <p class="entry-desc">
+          Mempelajari pengembangan aplikasi web, perangkat lunak, dan UI/UX melalui mata kuliah User Interface dan User Experience, Struktur Data, Web Framework, Basis Data, Pemograman Berorientasi Object, Rekayasa Perangkat Lunak, dan Kecerdasan Buat.
+        </p>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div class="section">
+      <h2 class="section-title">EXPERIENCE</h2>
+      
+      <div class="entry">
+        <div class="entry-header">
+          <span><strong>UI/UX Designer (Internship)</strong> | <em>Seven Inc, Yogyakarta, Indonesia</em></span>
+          <span class="entry-location">Yogyakarta</span>
+        </div>
+        <div class="entry-subtitle-row">
+          <span class="entry-desc">Merancang user flow, wireframe (low-fidelity), hingga desain high-fidelity dan prototipe interaktif antarmuka website.</span>
+          <span class="entry-date" style="padding-left: 10px;">Sep 2026 – Sekarang</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJEK -->
+    <div class="section">
+      <h2 class="section-title">PROJEK</h2>
+      <ul class="bullet-list">
+        <li class="bullet-item">
+          <strong>PasarNgalam – Marketplace Platform</strong> (<em>PHP, MySQL, JS, Laravel</em>) – Mengembangkan platform marketplace untuk penjual lokal dengan fitur manajemen produk, katalog, dan database terstruktur untuk mendukung transaksi digital.
+        </li>
+        <li class="bullet-item">
+          <strong>HealtyLife – Edukasi Kesehatan</strong> (<em>XAMPP, PHP, HTML, CSS, Figma</em>) – Mengembangkan website Healthy Life sebagai platform edukasi kesehatan mengenai kualitas tidur dan pola makan sehat.
+        </li>
+        <li class="bullet-item">
+          <strong>WaroengKconk - UMKM</strong> (<em>XAMPP, PHP, HTML, CSS, Figma</em>) – Mengembangkan website UMKM Waroeng K-Conk dengan fitur menu, pemesanan online, dan stok real-time.
+        </li>
+        <li class="bullet-item">
+          <strong>Design UI/UX – Premium Industrial Sanding Solutions</strong> (<em>Figma</em>) – Mendesain website perusahaan Tiaga Pertama Persada untuk menampilkan informasi produk material gerinda serta menyediakan fitur pre-order guna memudahkan proses pemesanan pelanggan.
+        </li>
+        <li class="bullet-item">
+          <strong>SentinelIoT</strong> – (<em>Laravel 13, React, Tailwind CSS, MySQL, ESP32, Fuzzy Logic</em>) – Sistem monitoring IoT real-time untuk deteksi kebakaran dan gas berbasis Fuzzy Logic Sugeno.
+        </li>
+        <li class="bullet-item">
+          <strong>UI/UX Mobile - LOKARA (Lokal Karya Indonesia)</strong> (<em>Figma</em>) – Merancang platform e-commerce dengan UX yang memudahkan pemasaran dan pembelian produk budaya Indonesia di pasar internasional.
+        </li>
+      </ul>
+    </div>
+
+    <!-- ORGANISASI -->
+    <div class="section">
+      <h2 class="section-title">ORGANISASI</h2>
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title">Direktorat Jendral Kajian Isu dan Aksi Propaganda</span>
+          <span class="entry-location">Malang</span>
+        </div>
+        <div class="entry-subtitle-row">
+          <span class="entry-subtitle">Badan Eksekutif Mahasiswa Fakultas Vokasi Universitas Brawijaya</span>
+          <span class="entry-date">2025 - 2026</span>
+        </div>
+        <ul class="bullet-list" style="margin-top: 4px;">
+          <li class="bullet-item">
+            <strong>Kawal Vokasi</strong> – Steering Commite mengoordinasikan aspirasi mahasiswa serta mengembangkan kemampuan kepemimpinan dan komunikasi.
+          </li>
+          <li class="bullet-item">
+            <strong>Diskusi Publik</strong> – Steering Commite mengoordinasikan anggota selama pelaksanaan acara serta mendukung kebutuhan desain dan operasional untuk memastikan kegiatan berjalan lancar.
+          </li>
+          <li class="bullet-item">
+            <strong>Desak Vokasi</strong> – Steering Commite mengoordinasikan jalannya acara, konsolidasi antar himpunan, serta mendukung kebutuhan desain dan operasional kegiatan.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 2 -->
+  <div class="page">
+    <!-- SERTIFIKAT -->
+    <div class="section" style="margin-top: 0;">
+      <h2 class="section-title">SERTIFIKAT</h2>
+      <ul class="bullet-list">
+        <li class="bullet-item">
+          <strong>Microsoft Office Desktop Application</strong> – Trust Training Partners (2025) <a href="#">[Lihat Sertifikat]</a>
+        </li>
+        <li class="bullet-item">
+          <strong>Uji Kompetensi</strong> – Teknik Komputer dan Jaringan <a href="#">[Lihat Sertifikat]</a>
+        </li>
+        <li class="bullet-item">
+          <strong>Universitas Sumatera Utara</strong> – UI/UX Competition 2026 <a href="#">[Lihat Sertifikat]</a>
+        </li>
+        <li class="bullet-item">
+          <strong>Kompetisi HOLOGY 9.0</strong> – Fakultas Ilmu Komputer, Universitas Brawijaya
+        </li>
+        <li class="bullet-item">
+          <strong>Olimpiade Vokasi Indonesia (OLIVIA)</strong> – Web Technology (2026)
+        </li>
+      </ul>
+    </div>
+
+    <!-- SKILL -->
+    <div class="section" style="margin-top: 16px;">
+      <h2 class="section-title">SKILL</h2>
+      <table class="skills-table">
+        <tr>
+          <td class="skills-label"><strong>Soft Skill</strong></td>
+          <td class="skills-sep">:</td>
+          <td class="skills-value">Leadership, Project Management, Teamwork, Problem Solving.</td>
+        </tr>
+        <tr>
+          <td class="skills-label"><strong>Bahasa Pemrograman</strong></td>
+          <td class="skills-sep">:</td>
+          <td class="skills-value">HTML, CSS, JavaScript, JavaGui.</td>
+        </tr>
+        <tr>
+          <td class="skills-label"><strong>Frameworks</strong></td>
+          <td class="skills-sep">:</td>
+          <td class="skills-value">ReactJS, Tailwind CSS.</td>
+        </tr>
+        <tr>
+          <td class="skills-label"><strong>Software & Tools</strong></td>
+          <td class="skills-sep">:</td>
+          <td class="skills-value">GitHub, Visual Studio Code, Figma, Claude Code, Virtual Box, Draw io, XAMPP</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+</body>
+</html>

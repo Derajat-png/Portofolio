@@ -67,6 +67,16 @@ function App() {
   const [fadeOut, setFadeOut] = useState(false);
   const [selectedCert, setSelectedCert] = useState(null);
 
+  const handleNavClick = (e, targetId) => {
+    e.preventDefault();
+    setMenuActive(false);
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.history.pushState(null, '', `#${targetId}`);
+    }
+  };
+
   useEffect(() => {
     if (loading || selectedCert) {
       document.body.style.overflow = 'hidden';
@@ -224,7 +234,7 @@ function App() {
       {/* Navigation Bar */}
       <header className="navbar-wrapper">
         <nav className="navbar">
-          <div className="nav-brand">
+          <div className="nav-brand" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{ cursor: 'pointer' }}>
             <img src={logoImg} alt="Dori Logo" className="nav-logo" />
             <span className="nav-name">DORI</span>
           </div>
@@ -234,12 +244,12 @@ function App() {
           </button>
 
           <ul className={`nav-links ${menuActive ? 'active' : ''}`}>
-            <li><a href="#education" className="nav-link" onClick={() => setMenuActive(false)}>Education</a></li>
-            <li><a href="#experience" className="nav-link" onClick={() => setMenuActive(false)}>Experience</a></li>
-            <li><a href="#projects" className="nav-link" onClick={() => setMenuActive(false)}>Projects</a></li>
-            <li><a href="#tools" className="nav-link" onClick={() => setMenuActive(false)}>Tools</a></li>
-            <li><a href="#certification" className="nav-link" onClick={() => setMenuActive(false)}>Certification</a></li>
-            <li><a href="#contact" className="nav-link" onClick={() => setMenuActive(false)}>Contact</a></li>
+            <li><a href="#education" className="nav-link" onClick={(e) => handleNavClick(e, 'education')}>Education</a></li>
+            <li><a href="#experience" className="nav-link" onClick={(e) => handleNavClick(e, 'experience')}>Experience</a></li>
+            <li><a href="#projects" className="nav-link" onClick={(e) => handleNavClick(e, 'projects')}>Projects</a></li>
+            <li><a href="#tools" className="nav-link" onClick={(e) => handleNavClick(e, 'tools')}>Tools</a></li>
+            <li><a href="#certification" className="nav-link" onClick={(e) => handleNavClick(e, 'certification')}>Certification</a></li>
+            <li><a href="#contact" className="nav-link" onClick={(e) => handleNavClick(e, 'contact')}>Contact</a></li>
           </ul>
         </nav>
       </header>
@@ -258,7 +268,7 @@ function App() {
             <p className="hero-desc">
               Has a strong interest in <strong>AI Engineering</strong>, particularly Machine Learning and Deep Learning, and continuously develops skills to build AI-powered solutions.
             </p>
-            <a href="/cv.pdf" download className="download-btn">
+            <a href="/CV%20Derajat.pdf" download="CV Derajat.pdf" className="download-btn">
               Download CV <img src={downloadIcon} className="download-icon" alt="download icon" />
             </a>
           </div>
@@ -346,12 +356,12 @@ function App() {
                         Coordinated the collection of student aspirations from various student associations, participated in the implementation of Student Representative Council programs, and developed communication, problem-solving, leadership, and teamwork skills.
                       </p>
                     </div>
-                    
+
                     <div className="timeline-logo-block">
                       <img src={parlemenLogo} alt="Student Representative Council Logo" className="timeline-logo" />
                     </div>
                   </div>
-                  
+
                   <div className="experience-photos-grid double-photos">
                     <img src={exp4} alt="Student Representative Council Activity 1" className="experience-photo" />
                     <img src={exp5} alt="Student Representative Council Activity 2" className="experience-photo" />
@@ -370,12 +380,12 @@ function App() {
                         Served as a Steering Committee member for various Student Executive Board (BEM) programs, coordinated the submission of aspirations from student organizations (Student Activity Units, Student Activity Associations, and Student Associations) at the faculty level, participated in university-level student aspiration forums, and developed strong communication, leadership, problem-solving, and teamwork skills through organizational activities.
                       </p>
                     </div>
-                    
+
                     <div className="timeline-logo-block">
                       <img src={bemLogo} alt="Student Executive Board Logo" className="timeline-logo" />
                     </div>
                   </div>
-                  
+
                   <div className="experience-photos-grid">
                     <img src={exp6} alt="Student Executive Board Activity 1" className="experience-photo" />
                     <img src={exp7} alt="Student Executive Board Activity 2" className="experience-photo" />
@@ -408,7 +418,7 @@ function App() {
                   <h3 className="project-item-title">SENTINEL - IOT</h3>
                   <span className="project-badge project-badge-iot">IOT</span>
                 </div>
-                
+
                 <p className="project-desc">
                   Developed an IoT monitoring system to detect fire and gas leaks in real time by integrating sensors, a microcontroller, and a web-based dashboard. Implemented the Sugeno Fuzzy Logic algorithm to process sensor data and enable automated decision-making, improving safety and response to potential hazards.
                 </p>
@@ -438,7 +448,7 @@ function App() {
                   <h3 className="project-item-title">WEBSITE HEALTY LIFE - EDUKASI KESEHATAN</h3>
                   <span className="project-badge">Website</span>
                 </div>
-                
+
                 <p className="project-desc">
                   Developed the Healthy Life website as a health education platform providing information on sleep quality, healthy eating habits, and healthy lifestyle practices. Designed and implemented website features to present educational content in a structured manner, improve users' access to health information, and enhance the overall user experience through an intuitive and informative interface.
                 </p>
@@ -490,7 +500,7 @@ function App() {
                   <h3 className="project-item-title">UI/UX MOBILE - LOKARA (LOKAL KARYA INDONESIA)</h3>
                   <span className="project-badge">Mobile</span>
                 </div>
-                
+
                 <p className="project-desc">
                   Designed a UX-driven e-commerce platform to support local businesses in promoting Indonesian cultural products to the international market. Developed an intuitive user journey, from product exploration and information discovery to the purchasing process, improving accessibility and enhancing the user experience in discovering and purchasing Indonesian cultural products.
                 </p>
@@ -516,7 +526,7 @@ function App() {
                   <h3 className="project-item-title">DESIGN UI/UX - PREMIUM INDUSTRIAL SANDING SOLUTIONS</h3>
                   <span className="project-badge">Website</span>
                 </div>
-                
+
                 <p className="project-desc">
                   Designed the Tiaga Pratama Persada company website as a digital platform to showcase grinding material products through comprehensive and informative content. Created an intuitive user interface and implemented a pre-order feature to simplify the ordering process, improve service accessibility, and support the company's digital transformation.
                 </p>
@@ -554,7 +564,7 @@ function App() {
                   <h3 className="project-item-title">PASAR NGALAM - MARKETPLACE PLATFORM</h3>
                   <span className="project-badge">Website</span>
                 </div>
-                
+
                 <p className="project-desc">
                   Developed a marketplace platform to help local sellers market their products digitally through product management, catalog, and structured database features. Designed an efficient data management system to streamline product entry, organization, and information display while supporting well-organized digital transactions.
                 </p>
@@ -592,7 +602,7 @@ function App() {
                   <h3 className="project-item-title">WEBSITE WAROENG K-CONK - UMKM KULINER</h3>
                   <span className="project-badge">Website</span>
                 </div>
-                
+
                 <p className="project-desc">
                   Developed a web platform for Waroeng K-Conk, a culinary local business (UMKM) specializing in authentic bebek bumbu hitam. Designed and implemented website features to display menus, facilitate ordering processes, and showcase culinary offerings to help the business digitalize its operations and reach a wider customer base.
                 </p>
@@ -640,202 +650,202 @@ function App() {
           <div className="tools-card scroll-reveal">
             <div className="tools-content-wrapper">
               <div className="tools-left">
-              <h2 className="tools-title-header">TOOLS<br/>SOFTWARE</h2>
-              <div className="tools-underline"></div>
-            </div>
-            
-            <div className="tools-right">
-              <div className="tools-grid">
-                {/* Visual Studio Code */}
-                <div className="tool-card-item">
-                  <div className="tool-icon-img-wrapper">
-                    <img src={vscIcon} alt="Visual Studio Code" className="tool-icon-img" />
-                  </div>
-                  <span className="tool-icon-label">Visual Studio Code</span>
-                </div>
+                <h2 className="tools-title-header">TOOLS<br />SOFTWARE</h2>
+                <div className="tools-underline"></div>
+              </div>
 
-                {/* Microsoft Word */}
-                <div className="tool-card-item">
-                  <div className="tool-icon-img-wrapper">
-                    <img src={wordIcon} alt="Microsoft Word" className="tool-icon-img" />
+              <div className="tools-right">
+                <div className="tools-grid">
+                  {/* Visual Studio Code */}
+                  <div className="tool-card-item">
+                    <div className="tool-icon-img-wrapper">
+                      <img src={vscIcon} alt="Visual Studio Code" className="tool-icon-img" />
+                    </div>
+                    <span className="tool-icon-label">Visual Studio Code</span>
                   </div>
-                  <span className="tool-icon-label">Microsoft Word</span>
-                </div>
 
-                {/* Figma */}
-                <div className="tool-card-item">
-                  <div className="tool-icon-img-wrapper">
-                    <img src={figmaUbIcon} alt="Figma" className="tool-icon-img" />
+                  {/* Microsoft Word */}
+                  <div className="tool-card-item">
+                    <div className="tool-icon-img-wrapper">
+                      <img src={wordIcon} alt="Microsoft Word" className="tool-icon-img" />
+                    </div>
+                    <span className="tool-icon-label">Microsoft Word</span>
                   </div>
-                  <span className="tool-icon-label">FIGMA</span>
-                </div>
 
-                {/* AI Claude */}
-                <div className="tool-card-item">
-                  <div className="tool-icon-img-wrapper">
-                    <img src={claudeIcon} alt="AI Claude" className="tool-icon-img" />
+                  {/* Figma */}
+                  <div className="tool-card-item">
+                    <div className="tool-icon-img-wrapper">
+                      <img src={figmaUbIcon} alt="Figma" className="tool-icon-img" />
+                    </div>
+                    <span className="tool-icon-label">FIGMA</span>
                   </div>
-                  <span className="tool-icon-label">AI Claude</span>
-                </div>
 
-                {/* GitHub */}
-                <div className="tool-card-item">
-                  <div className="tool-icon-img-wrapper">
-                    <img src={githubUbIcon} alt="GitHub" className="tool-icon-img" />
+                  {/* AI Claude */}
+                  <div className="tool-card-item">
+                    <div className="tool-icon-img-wrapper">
+                      <img src={claudeIcon} alt="AI Claude" className="tool-icon-img" />
+                    </div>
+                    <span className="tool-icon-label">AI Claude</span>
                   </div>
-                  <span className="tool-icon-label">GITHUB</span>
-                </div>
 
-                {/* CSS */}
-                <div className="tool-card-item">
-                  <div className="tool-icon-img-wrapper">
-                    <img src={cssUbIcon} alt="CSS" className="tool-icon-img" />
+                  {/* GitHub */}
+                  <div className="tool-card-item">
+                    <div className="tool-icon-img-wrapper">
+                      <img src={githubUbIcon} alt="GitHub" className="tool-icon-img" />
+                    </div>
+                    <span className="tool-icon-label">GITHUB</span>
                   </div>
-                  <span className="tool-icon-label">CSS</span>
-                </div>
 
-                {/* HTML */}
-                <div className="tool-card-item">
-                  <div className="tool-icon-img-wrapper">
-                    <img src={htmlUbIcon} alt="HTML" className="tool-icon-img" />
+                  {/* CSS */}
+                  <div className="tool-card-item">
+                    <div className="tool-icon-img-wrapper">
+                      <img src={cssUbIcon} alt="CSS" className="tool-icon-img" />
+                    </div>
+                    <span className="tool-icon-label">CSS</span>
                   </div>
-                  <span className="tool-icon-label">HTML</span>
-                </div>
 
-                {/* ReactJS */}
-                <div className="tool-card-item">
-                  <div className="tool-icon-img-wrapper">
-                    <img src={reactUbIcon} alt="ReactJS" className="tool-icon-img" />
+                  {/* HTML */}
+                  <div className="tool-card-item">
+                    <div className="tool-icon-img-wrapper">
+                      <img src={htmlUbIcon} alt="HTML" className="tool-icon-img" />
+                    </div>
+                    <span className="tool-icon-label">HTML</span>
                   </div>
-                  <span className="tool-icon-label">ReactJS</span>
-                </div>
 
-                {/* Java */}
-                <div className="tool-card-item">
-                  <div className="tool-icon-img-wrapper">
-                    <img src={javaIcon} alt="Java" className="tool-icon-img" />
+                  {/* ReactJS */}
+                  <div className="tool-card-item">
+                    <div className="tool-icon-img-wrapper">
+                      <img src={reactUbIcon} alt="ReactJS" className="tool-icon-img" />
+                    </div>
+                    <span className="tool-icon-label">ReactJS</span>
                   </div>
-                  <span className="tool-icon-label">JAVA</span>
-                </div>
 
-                {/* JavaScript */}
-                <div className="tool-card-item">
-                  <div className="tool-icon-img-wrapper">
-                    <img src={jsUbIcon} alt="JavaScript" className="tool-icon-img" />
+                  {/* Java */}
+                  <div className="tool-card-item">
+                    <div className="tool-icon-img-wrapper">
+                      <img src={javaIcon} alt="Java" className="tool-icon-img" />
+                    </div>
+                    <span className="tool-icon-label">JAVA</span>
                   </div>
-                  <span className="tool-icon-label">Java Script</span>
+
+                  {/* JavaScript */}
+                  <div className="tool-card-item">
+                    <div className="tool-icon-img-wrapper">
+                      <img src={jsUbIcon} alt="JavaScript" className="tool-icon-img" />
+                    </div>
+                    <span className="tool-icon-label">Java Script</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    {/* Certification Section */}
-    <section id="certification" className="certification-section">
-      <div className="certification-inner">
-        <h2 className="certification-title scroll-reveal">CERTIFICATIONS</h2>
-        <div className="certification-divider scroll-reveal"></div>
-        
-        <div className="certifications-grid">
-          {certificates.map((cert, index) => (
-            <div key={index} className="cert-card-item scroll-reveal" onClick={() => setSelectedCert(cert)}>
-              <div className="cert-image-container">
-                <img src={cert.image} alt={cert.title} className="cert-card-img" />
-                <div className="cert-overlay">
-                  <span className="cert-zoom-text">View Certification</span>
+      {/* Certification Section */}
+      <section id="certification" className="certification-section">
+        <div className="certification-inner">
+          <h2 className="certification-title scroll-reveal">CERTIFICATIONS</h2>
+          <div className="certification-divider scroll-reveal"></div>
+
+          <div className="certifications-grid">
+            {certificates.map((cert, index) => (
+              <div key={index} className="cert-card-item scroll-reveal" onClick={() => setSelectedCert(cert)}>
+                <div className="cert-image-container">
+                  <img src={cert.image} alt={cert.title} className="cert-card-img" />
+                  <div className="cert-overlay">
+                    <span className="cert-zoom-text">View Certification</span>
+                  </div>
+                </div>
+                <div className="cert-info">
+                  <h3 className="cert-item-title">{cert.title}</h3>
+                  <p className="cert-item-issuer">{cert.issuer}</p>
+                  <div className="cert-meta">
+                    <span className="cert-item-date">{cert.date}</span>
+                    {cert.id && <span className="cert-item-id">ID: {cert.id}</span>}
+                  </div>
                 </div>
               </div>
-              <div className="cert-info">
-                <h3 className="cert-item-title">{cert.title}</h3>
-                <p className="cert-item-issuer">{cert.issuer}</p>
-                <div className="cert-meta">
-                  <span className="cert-item-date">{cert.date}</span>
-                  {cert.id && <span className="cert-item-id">ID: {cert.id}</span>}
-                </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Footer Section */}
+      <div className="footer-wrapper">
+        <footer id="contact" className="site-footer">
+          <div className="footer-container">
+            <div className="footer-brand">
+              <span>Derajat.Dev</span>
+            </div>
+
+            <div className="footer-copyright">
+              <span>&copy; 2026 Derajat-dev. All Rights Reserved.</span>
+            </div>
+
+            <div className="footer-socials">
+              <a
+                href="https://github.com/Derajat-png"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-social-link"
+                aria-label="GitHub"
+                data-tooltip="GitHub"
+              >
+                <img src={githubFooterIcon} alt="GitHub" className="footer-social-icon" />
+              </a>
+              <a
+                href="mailto:derajatminsyana2005@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-social-link"
+                aria-label="Gmail"
+                data-tooltip="Gmail"
+              >
+                <img src={gmailFooterIcon} alt="Gmail" className="footer-social-icon" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/derajat"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-social-link"
+                aria-label="LinkedIn"
+                data-tooltip="LinkedIn"
+              >
+                <img src={linkedinFooterIcon} alt="LinkedIn" className="footer-social-icon" />
+              </a>
+              <a
+                href="https://www.instagram.com/derajat_msy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-social-link"
+                aria-label="Instagram"
+                data-tooltip="Instagram"
+              >
+                <img src={instagramFooterIcon} alt="Instagram" className="footer-social-icon" />
+              </a>
+            </div>
+          </div>
+        </footer>
+      </div>
+
+      {/* Certification Zoom Lightbox Modal */}
+      {selectedCert && (
+        <div className="cert-modal-overlay" onClick={() => setSelectedCert(null)}>
+          <button className="cert-modal-close" onClick={() => setSelectedCert(null)}>✕</button>
+          <div className="cert-modal-content" onClick={(e) => e.stopPropagation()}>
+            <img src={selectedCert.image} alt={selectedCert.title} className="cert-modal-img" />
+            <div className="cert-modal-info">
+              <h3 className="cert-modal-title">{selectedCert.title}</h3>
+              <p className="cert-modal-issuer">{selectedCert.issuer}</p>
+              <div className="cert-modal-meta">
+                <span>Year: {selectedCert.date}</span>
+                {selectedCert.id && <span>Credential ID: {selectedCert.id}</span>}
               </div>
             </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    {/* Footer Section */}
-    <div className="footer-wrapper">
-      <footer id="contact" className="site-footer">
-        <div className="footer-container">
-          <div className="footer-brand">
-            <span>Derajat.Dev</span>
-          </div>
-
-          <div className="footer-copyright">
-            <span>&copy; 2026 Derajat-dev. All Rights Reserved.</span>
-          </div>
-
-          <div className="footer-socials">
-            <a
-              href="https://github.com/derajat-dev"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="footer-social-link"
-              aria-label="GitHub"
-              data-tooltip="GitHub"
-            >
-              <img src={githubFooterIcon} alt="GitHub" className="footer-social-icon" />
-            </a>
-            <a
-              href="mailto:derajatdev@gmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="footer-social-link"
-              aria-label="Gmail"
-              data-tooltip="Gmail"
-            >
-              <img src={gmailFooterIcon} alt="Gmail" className="footer-social-icon" />
-            </a>
-            <a
-              href="https://linkedin.com/in/derajat"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="footer-social-link"
-              aria-label="LinkedIn"
-              data-tooltip="LinkedIn"
-            >
-              <img src={linkedinFooterIcon} alt="LinkedIn" className="footer-social-icon" />
-            </a>
-            <a
-              href="https://instagram.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="footer-social-link"
-              aria-label="Instagram"
-              data-tooltip="Instagram"
-            >
-              <img src={instagramFooterIcon} alt="Instagram" className="footer-social-icon" />
-            </a>
           </div>
         </div>
-      </footer>
-    </div>
-
-    {/* Certification Zoom Lightbox Modal */}
-    {selectedCert && (
-      <div className="cert-modal-overlay" onClick={() => setSelectedCert(null)}>
-        <button className="cert-modal-close" onClick={() => setSelectedCert(null)}>✕</button>
-        <div className="cert-modal-content" onClick={(e) => e.stopPropagation()}>
-          <img src={selectedCert.image} alt={selectedCert.title} className="cert-modal-img" />
-          <div className="cert-modal-info">
-            <h3 className="cert-modal-title">{selectedCert.title}</h3>
-            <p className="cert-modal-issuer">{selectedCert.issuer}</p>
-            <div className="cert-modal-meta">
-              <span>Year: {selectedCert.date}</span>
-              {selectedCert.id && <span>Credential ID: {selectedCert.id}</span>}
-            </div>
-          </div>
-        </div>
-      </div>
-    )}
+      )}
     </>
   )
 }
