@@ -54,6 +54,10 @@ import certHmpsti from './assets/hmpsti ub.png'
 import certJava from './assets/java.png'
 import certApply from './assets/apply.png'
 import certUi from './assets/ui.png'
+import githubFooterIcon from './assets/GitHub (1).png'
+import gmailFooterIcon from './assets/Gmail Logo (1).png'
+import linkedinFooterIcon from './assets/LinkedIn (1).png'
+import instagramFooterIcon from './assets/Instagram (2).png'
 import './App.css'
 
 function App() {
@@ -740,7 +744,7 @@ function App() {
               <div className="cert-image-container">
                 <img src={cert.image} alt={cert.title} className="cert-card-img" />
                 <div className="cert-overlay">
-                  <span className="cert-zoom-icon">🔍 View Certificate</span>
+                  <span className="cert-zoom-text">View Certification</span>
                 </div>
               </div>
               <div className="cert-info">
@@ -756,6 +760,64 @@ function App() {
         </div>
       </div>
     </section>
+
+    {/* Footer Section */}
+    <div className="footer-wrapper">
+      <footer id="contact" className="site-footer">
+        <div className="footer-container">
+          <div className="footer-brand">
+            <span>Derajat.Dev</span>
+          </div>
+
+          <div className="footer-copyright">
+            <span>&copy; 2026 Derajat-dev. All Rights Reserved.</span>
+          </div>
+
+          <div className="footer-socials">
+            <a
+              href="https://github.com/derajat-dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-social-link"
+              aria-label="GitHub"
+              data-tooltip="GitHub"
+            >
+              <img src={githubFooterIcon} alt="GitHub" className="footer-social-icon" />
+            </a>
+            <a
+              href="mailto:derajatdev@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-social-link"
+              aria-label="Gmail"
+              data-tooltip="Gmail"
+            >
+              <img src={gmailFooterIcon} alt="Gmail" className="footer-social-icon" />
+            </a>
+            <a
+              href="https://linkedin.com/in/derajat"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-social-link"
+              aria-label="LinkedIn"
+              data-tooltip="LinkedIn"
+            >
+              <img src={linkedinFooterIcon} alt="LinkedIn" className="footer-social-icon" />
+            </a>
+            <a
+              href="https://instagram.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-social-link"
+              aria-label="Instagram"
+              data-tooltip="Instagram"
+            >
+              <img src={instagramFooterIcon} alt="Instagram" className="footer-social-icon" />
+            </a>
+          </div>
+        </div>
+      </footer>
+    </div>
 
     {/* Certification Zoom Lightbox Modal */}
     {selectedCert && (
