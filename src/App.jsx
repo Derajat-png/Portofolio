@@ -44,6 +44,12 @@ import htmlUbIcon from './assets/html ub.png'
 import reactUbIcon from './assets/react ub.png'
 import javaIcon from './assets/java ub.png'
 import jsUbIcon from './assets/js ub.png'
+import cuIcon from './assets/cu ub.png'
+import vbIcon from './assets/vb ub.png'
+import behanceIcon from './assets/behance ub.png'
+import geminiIcon from './assets/gemini ub.png'
+import laragonIcon from './assets/laragon ub.png'
+import dogImg from './assets/anjing.jpeg'
 import certUji from './assets/uji.png'
 import certMicrosoft from './assets/microsoft.png'
 import certHackathon from './assets/hackthon.png'
@@ -225,12 +231,6 @@ function App() {
         </div>
       )}
 
-      {/* Background Grid */}
-      <div className="background-grid"></div>
-
-      {/* Sun Glow Decoration */}
-      <div className="sun-glow"></div>
-
       {/* Navigation Bar */}
       <header className="navbar-wrapper">
         <nav className="navbar">
@@ -254,34 +254,45 @@ function App() {
         </nav>
       </header>
 
-      <div className="app-container">
-        {/* Hero Section */}
-        <main className="hero-section scroll-reveal">
-          <div className="hero-left">
-            <div className="hero-greet">
-              Helo <img src={helloImg} className="wave-icon" alt="waving hand" /> I'm
-            </div>
-            <h1 className="hero-name">DERAJAT</h1>
-            <p className="hero-desc">
-              An <strong>Information Technology</strong> student at <strong>Brawijaya University</strong> with expertise in Front-End Development and experience in developing website from the UI/UX design stage to implementation, creating responsive, functional, and user-centered web applications. Skilled in <strong>AI Prompting</strong>.
-            </p>
-            <p className="hero-desc">
-              Has a strong interest in <strong>AI Engineering</strong>, particularly Machine Learning and Deep Learning, and continuously develops skills to build AI-powered solutions.
-            </p>
-            <a href="/CV%20Derajat.pdf" download="CV Derajat.pdf" className="download-btn">
-              Download CV <img src={downloadIcon} className="download-icon" alt="download icon" />
-            </a>
-          </div>
+      {/* Hero Section Wrapper with Background Grid & Sun Glow */}
+      <div className="hero-wrapper">
+        {/* Background Grid */}
+        <div className="background-grid"></div>
 
-          <div className="hero-right">
-            <div className="profile-image-container">
-              <img src={profileImg} alt="Derajat Portrait" className="hero-profile-img" />
-            </div>
-          </div>
-        </main>
+        {/* Sun Glow Decoration */}
+        <div className="sun-glow"></div>
 
-        {/* Education Section */}
-        <section id="education" className="education-section">
+        <div className="app-container">
+          {/* Hero Section */}
+          <main className="hero-section scroll-reveal">
+            <div className="hero-left">
+              <div className="hero-greet">
+                Helo <img src={helloImg} className="wave-icon" alt="waving hand" /> I'm
+              </div>
+              <h1 className="hero-name">DERAJAT</h1>
+              <p className="hero-desc">
+                An <strong>Information Technology</strong> student at <strong>Brawijaya University</strong> with expertise in Front-End Development and experience in developing website from the UI/UX design stage to implementation, creating responsive, functional, and user-centered web applications. Skilled in <strong>AI Prompting</strong>.
+              </p>
+              <p className="hero-desc">
+                Has a strong interest in <strong>AI Engineering</strong>, particularly Machine Learning and Deep Learning, and continuously develops skills to build AI-powered solutions.
+              </p>
+              <a href="/CV%20Derajat.pdf" download="CV Derajat.pdf" className="download-btn">
+                Download CV <img src={downloadIcon} className="download-icon" alt="download icon" />
+              </a>
+            </div>
+
+            <div className="hero-right">
+              <div className="profile-image-container">
+                <img src={profileImg} alt="Derajat Portrait" className="hero-profile-img" />
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+
+      {/* Education Section */}
+      <section id="education" className="education-section">
+        <div className="education-inner">
           <h2 className="section-title">EDUCATION</h2>
 
           <div className="education-list">
@@ -305,8 +316,8 @@ function App() {
               </p>
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
 
       {/* Experience Section */}
       <section id="experience" className="experience-section">
@@ -652,6 +663,9 @@ function App() {
               <div className="tools-left">
                 <h2 className="tools-title-header">TOOLS<br />SOFTWARE</h2>
                 <div className="tools-underline"></div>
+                <div className="tools-dog-wrapper">
+                  <img src={dogImg} alt="Coding Dog" className="tools-dog-img" />
+                </div>
               </div>
 
               <div className="tools-right">
@@ -734,6 +748,46 @@ function App() {
                       <img src={jsUbIcon} alt="JavaScript" className="tool-icon-img" />
                     </div>
                     <span className="tool-icon-label">Java Script</span>
+                  </div>
+
+                  {/* ClickUp */}
+                  <div className="tool-card-item">
+                    <div className="tool-icon-img-wrapper">
+                      <img src={cuIcon} alt="ClickUp" className="tool-icon-img" />
+                    </div>
+                    <span className="tool-icon-label">ClickUp</span>
+                  </div>
+
+                  {/* VirtualBox */}
+                  <div className="tool-card-item">
+                    <div className="tool-icon-img-wrapper">
+                      <img src={vbIcon} alt="VirtualBox" className="tool-icon-img" />
+                    </div>
+                    <span className="tool-icon-label">VirtualBox</span>
+                  </div>
+
+                  {/* Behance */}
+                  <div className="tool-card-item">
+                    <div className="tool-icon-img-wrapper">
+                      <img src={behanceIcon} alt="Behance" className="tool-icon-img" />
+                    </div>
+                    <span className="tool-icon-label">Behance</span>
+                  </div>
+
+                  {/* Gemini */}
+                  <div className="tool-card-item">
+                    <div className="tool-icon-img-wrapper">
+                      <img src={geminiIcon} alt="Gemini" className="tool-icon-img" />
+                    </div>
+                    <span className="tool-icon-label">Gemini AI</span>
+                  </div>
+
+                  {/* Laragon */}
+                  <div className="tool-card-item">
+                    <div className="tool-icon-img-wrapper">
+                      <img src={laragonIcon} alt="Laragon" className="tool-icon-img" />
+                    </div>
+                    <span className="tool-icon-label">Laragon</span>
                   </div>
                 </div>
               </div>
