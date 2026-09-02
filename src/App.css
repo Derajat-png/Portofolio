@@ -657,20 +657,25 @@
   .nav-links {
     position: fixed;
     top: 0;
-    right: -100%;
+    right: 0;
     width: 250px;
     height: 100vh;
     background: #ffffff;
     flex-direction: column;
     padding: 80px 30px;
     box-shadow: -5px 0 20px rgba(0, 0, 0, 0.05);
-    transition: right 0.3s ease;
+    transform: translateX(100%);
+    transition: transform 0.3s ease, visibility 0.3s ease;
     z-index: 15;
     gap: 24px;
+    visibility: hidden;
+    pointer-events: none;
   }
 
   .nav-links.active {
-    right: 0;
+    transform: translateX(0);
+    visibility: visible;
+    pointer-events: auto;
   }
 
   .hero-name {
@@ -1029,8 +1034,9 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
   background-color: #111212;
   background-image: radial-gradient(circle at center, #1b1c1c 0%, #0F1010 100%);
   z-index: 9999;
