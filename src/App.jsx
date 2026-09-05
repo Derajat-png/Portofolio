@@ -64,14 +64,25 @@ import githubFooterIcon from './assets/GitHub (1).png'
 import gmailFooterIcon from './assets/Gmail Logo (1).png'
 import linkedinFooterIcon from './assets/LinkedIn (1).png'
 import instagramFooterIcon from './assets/Instagram (2).png'
+import { translations } from './translations'
 import './App.css'
 
 function App() {
+  const [lang, setLang] = useState(() => {
+    return localStorage.getItem('portofolio_lang') || 'en';
+  });
   const [menuActive, setMenuActive] = useState(false);
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   const [fadeOut, setFadeOut] = useState(false);
   const [selectedCert, setSelectedCert] = useState(null);
+
+  const t = translations[lang] || translations.en;
+
+  const handleLanguageChange = (newLang) => {
+    setLang(newLang);
+    localStorage.setItem('portofolio_lang', newLang);
+  };
 
   const handleNavClick = (e, targetId) => {
     e.preventDefault();
@@ -138,78 +149,23 @@ function App() {
     };
   }, []);
 
-  const certificates = [
-    {
-      title: "UI/UX Design Competition (CodeFest 002)",
-      issuer: "Universitas Sumatera Utara",
-      date: "2026",
-      image: certUiux,
-      id: "CodeFest002/UIUX/2026"
-    },
-    {
-      title: "Sertifikat Uji Kompetensi (TKJ)",
-      issuer: "SMK 11 Maret & PT. Shinwood Global Indonesia",
-      date: "2024",
-      image: certUji,
-      id: "73937/UKK/TKJ/2024"
-    },
-    {
-      title: "Microsoft Office Desktop Application",
-      issuer: "Trust Training Partners & Universitas Brawijaya",
-      date: "2025",
-      image: certMicrosoft,
-      id: "TTP/MOS/UB/2025"
-    },
-    {
-      title: "Hackathons & Datathons Tips & Tricks",
-      issuer: "Dicoding Indonesia",
-      date: "2026",
-      image: certHackathon,
-      id: "DICODING/HACKATHON/2026"
-    },
-    {
-      title: "Internship Completion Certificate",
-      issuer: "PT. Global Dimensi Metalindo",
-      date: "2023",
-      image: certIntern,
-      id: "GDM/INT/2023/08"
-    },
-    {
-      title: "Director General of Issue Analysis",
-      issuer: "BEM Fakultas Vokasi Universitas Brawijaya",
-      date: "2026",
-      image: certBem,
-      id: "BEMVOKASI/UB/DIRGEN/2026"
-    },
-    {
-      title: "Young Staff of Advokesma Department",
-      issuer: "HMPSTI Universitas Brawijaya",
-      date: "2024",
-      image: certHmpsti,
-      id: "HMPSTI/ADVOKESMA/2024"
-    },
-    {
-      title: "Introduction to Java Course",
-      issuer: "Sololearn",
-      date: "2024",
-      image: certJava,
-      id: "SOLOLEARN/JAVA/INTRO/2024"
-    },
-    {
-      title: "Digistar Connect Program",
-      issuer: "Digistar Club x GDGoC UB",
-      date: "2026",
-      image: certApply,
-      id: "DIGISTAR/GDGOC/2026"
-    },
-    {
-      title: "CAMP Future Ready Talks",
-      issuer: "Celerates CAMP",
-      date: "2026",
-      image: certUi,
-      id: "CELERATES/CAMP/FRT/2026"
-    }
+  const certImages = [
+    certUiux,
+    certUji,
+    certMicrosoft,
+    certHackathon,
+    certIntern,
+    certBem,
+    certHmpsti,
+    certJava,
+    certApply,
+    certUi
   ];
+
+  const certificates = t.certifications.items.map((cert, index) => ({
+    ...cert,
+    image: certImages[index] || certUiux
+  }));
 
   return (
     <>
@@ -217,7 +173,7 @@ function App() {
         <div className={`loader-overlay ${fadeOut ? 'fade-out' : ''}`}>
           <div className="loader-content">
             <h1 className="loader-title">
-              {"My Portofolio".split("").map((char, index) => (
+              {t.loader.split("").map((char, index) => (
                 <span key={index} style={{ animationDelay: `${index * 0.08}s` }}>
                   {char === " " ? "\u00A0" : char}
                 </span>
@@ -239,18 +195,41 @@ function App() {
             <span className="nav-name">DORI</span>
           </div>
 
-          <button className="menu-toggle" onClick={() => setMenuActive(!menuActive)}>
-            {menuActive ? '✕' : '☰'}
-          </button>
+          <div className="nav-right-container">
+            <button className="menu-toggle" onClick={() => setMenuActive(!menuActive)} aria-label="Toggle navigation menu">
+              {menuActive ? '✕' : '☰'}
+            </button>
 
-          <ul className={`nav-links ${menuActive ? 'active' : ''}`}>
-            <li><a href="#education" className="nav-link" onClick={(e) => handleNavClick(e, 'education')}>Education</a></li>
-            <li><a href="#experience" className="nav-link" onClick={(e) => handleNavClick(e, 'experience')}>Experience</a></li>
-            <li><a href="#projects" className="nav-link" onClick={(e) => handleNavClick(e, 'projects')}>Projects</a></li>
-            <li><a href="#tools" className="nav-link" onClick={(e) => handleNavClick(e, 'tools')}>Tools</a></li>
-            <li><a href="#certification" className="nav-link" onClick={(e) => handleNavClick(e, 'certification')}>Certification</a></li>
-            <li><a href="#contact" className="nav-link" onClick={(e) => handleNavClick(e, 'contact')}>Contact</a></li>
-          </ul>
+            <ul className={`nav-links ${menuActive ? 'active' : ''}`}>
+              <li><a href="#education" className="nav-link" onClick={(e) => handleNavClick(e, 'education')}>{t.nav.education}</a></li>
+              <li><a href="#experience" className="nav-link" onClick={(e) => handleNavClick(e, 'experience')}>{t.nav.experience}</a></li>
+              <li><a href="#projects" className="nav-link" onClick={(e) => handleNavClick(e, 'projects')}>{t.nav.projects}</a></li>
+              <li><a href="#tools" className="nav-link" onClick={(e) => handleNavClick(e, 'tools')}>{t.nav.tools}</a></li>
+              <li><a href="#certification" className="nav-link" onClick={(e) => handleNavClick(e, 'certification')}>{t.nav.certification}</a></li>
+              <li><a href="#contact" className="nav-link" onClick={(e) => handleNavClick(e, 'contact')}>{t.nav.contact}</a></li>
+              <li className="lang-switcher-item">
+                <div className="lang-toggle-wrapper">
+                  <button
+                    type="button"
+                    className={`lang-btn ${lang === 'id' ? 'active' : ''}`}
+                    onClick={() => handleLanguageChange('id')}
+                    title="Bahasa Indonesia"
+                  >
+                    ID
+                  </button>
+                  <span className="lang-divider">|</span>
+                  <button
+                    type="button"
+                    className={`lang-btn ${lang === 'en' ? 'active' : ''}`}
+                    onClick={() => handleLanguageChange('en')}
+                    title="English"
+                  >
+                    EN
+                  </button>
+                </div>
+              </li>
+            </ul>
+          </div>
         </nav>
       </header>
 
@@ -267,17 +246,13 @@ function App() {
           <main className="hero-section scroll-reveal">
             <div className="hero-left">
               <div className="hero-greet">
-                Helo <img src={helloImg} className="wave-icon" alt="waving hand" /> I'm
+                {t.hero.greetBefore} <img src={helloImg} className="wave-icon" alt="waving hand" /> {t.hero.greetAfter}
               </div>
-              <h1 className="hero-name">DERAJAT</h1>
-              <p className="hero-desc">
-                An <strong>Information Technology</strong> student at <strong>Brawijaya University</strong> with expertise in Front-End Development and experience in developing website from the UI/UX design stage to implementation, creating responsive, functional, and user-centered web applications. Skilled in <strong>AI Prompting</strong>.
-              </p>
-              <p className="hero-desc">
-                Has a strong interest in <strong>AI Engineering</strong>, particularly Machine Learning and Deep Learning, and continuously develops skills to build AI-powered solutions.
-              </p>
+              <h1 className="hero-name">{t.hero.name}</h1>
+              <p className="hero-desc" dangerouslySetInnerHTML={{ __html: t.hero.desc1 }} />
+              <p className="hero-desc" dangerouslySetInnerHTML={{ __html: t.hero.desc2 }} />
               <a href="/CV%20Derajat.pdf" download="CV Derajat.pdf" className="download-btn">
-                Download CV <img src={downloadIcon} className="download-icon" alt="download icon" />
+                {t.hero.downloadCv} <img src={downloadIcon} className="download-icon" alt="download icon" />
               </a>
             </div>
 
@@ -293,16 +268,16 @@ function App() {
       {/* Education Section */}
       <section id="education" className="education-section">
         <div className="education-inner">
-          <h2 className="section-title">EDUCATION</h2>
+          <h2 className="section-title">{t.education.title}</h2>
 
           <div className="education-list">
             <div className="education-item scroll-reveal">
               <div className="education-logo-wrapper">
                 <img src={smksLogo} alt="SMKS 11 Maret Logo" className="education-logo" />
               </div>
-              <h3 className="education-title">SMKS 11 Maret - Computer Network Engineering</h3>
+              <h3 className="education-title">{t.education.items[0].title}</h3>
               <p className="education-desc">
-                Completed vocational high school education in Computer and Network Engineering (TKJ), studying computer networking fundamentals, including the OSI model, network topologies, and LAN, MAN, and WAN concepts. Gained hands-on experience with LAN cabling, fiber optic networking, and Ubuntu Linux through practical laboratory activities.
+                {t.education.items[0].desc}
               </p>
             </div>
 
@@ -310,9 +285,9 @@ function App() {
               <div className="education-logo-wrapper">
                 <img src={ubLogo} alt="Brawijaya University Logo" className="education-logo" />
               </div>
-              <h3 className="education-title">Brawijaya University - Information Technology</h3>
+              <h3 className="education-title">{t.education.items[1].title}</h3>
               <p className="education-desc">
-                Currently pursuing a Diploma (D3) in Information Technology at Universitas Brawijaya, studying web application development and UI/UX through courses such as User Interface and User Experience, Data Structures, Web Framework, Databases, Object-Oriented Programming, Software Engineering, Artificial Intelligence, and Internet of Things (IoT) development.
+                {t.education.items[1].desc}
               </p>
             </div>
           </div>
@@ -322,10 +297,10 @@ function App() {
       {/* Experience Section */}
       <section id="experience" className="experience-section">
         <div className="experience-inner">
-          <h2 className="experience-title">EXPERIENCE</h2>
+          <h2 className="experience-title">{t.experience.title}</h2>
           <div className="experience-divider"></div>
 
-          <h3 className="org-subtitle">ORGANIZATION</h3>
+          <h3 className="org-subtitle">{t.experience.subtitle}</h3>
 
           <div className="experience-timeline-container">
             <div className="timeline-left-accent"></div>
@@ -336,10 +311,10 @@ function App() {
                 <div className="timeline-item-body">
                   <div className="timeline-item-header">
                     <div className="timeline-text-block">
-                      <div className="timeline-year">2024</div>
-                      <h4 className="timeline-role">Information Technology - Student Association</h4>
+                      <div className="timeline-year">{t.experience.items[0].year}</div>
+                      <h4 className="timeline-role">{t.experience.items[0].role}</h4>
                       <p className="timeline-desc">
-                        Collected and represented students' academic and non-academic aspirations, participated in Student Association programs, supported advocacy initiatives through the Student Advocacy and Welfare Department, and developed strong communication, leadership, problem-solving, and teamwork skills.
+                        {t.experience.items[0].desc}
                       </p>
                     </div>
 
@@ -361,10 +336,10 @@ function App() {
                 <div className="timeline-item-body">
                   <div className="timeline-item-header">
                     <div className="timeline-text-block">
-                      <div className="timeline-year">2024</div>
-                      <h4 className="timeline-role">Faculty of vocational studies – Student Representative Council</h4>
+                      <div className="timeline-year">{t.experience.items[1].year}</div>
+                      <h4 className="timeline-role">{t.experience.items[1].role}</h4>
                       <p className="timeline-desc">
-                        Coordinated the collection of student aspirations from various student associations, participated in the implementation of Student Representative Council programs, and developed communication, problem-solving, leadership, and teamwork skills.
+                        {t.experience.items[1].desc}
                       </p>
                     </div>
 
@@ -385,10 +360,10 @@ function App() {
                 <div className="timeline-item-body">
                   <div className="timeline-item-header">
                     <div className="timeline-text-block">
-                      <div className="timeline-year">2025</div>
-                      <h4 className="timeline-role">Faculty of vocational studies – Student Executive Board</h4>
+                      <div className="timeline-year">{t.experience.items[2].year}</div>
+                      <h4 className="timeline-role">{t.experience.items[2].role}</h4>
                       <p className="timeline-desc">
-                        Served as a Steering Committee member for various Student Executive Board (BEM) programs, coordinated the submission of aspirations from student organizations (Student Activity Units, Student Activity Associations, and Student Associations) at the faculty level, participated in university-level student aspiration forums, and developed strong communication, leadership, problem-solving, and teamwork skills through organizational activities.
+                        {t.experience.items[2].desc}
                       </p>
                     </div>
 
@@ -412,7 +387,7 @@ function App() {
       {/* Projects Section */}
       <section id="projects" className="projects-section">
         <div className="projects-inner">
-          <h2 className="projects-title scroll-reveal">PROJECTS</h2>
+          <h2 className="projects-title scroll-reveal">{t.projects.title}</h2>
           <div className="projects-divider scroll-reveal"></div>
 
           <div className="projects-list">
@@ -426,12 +401,12 @@ function App() {
 
               <div className="project-info">
                 <div className="project-header-container">
-                  <h3 className="project-item-title">SENTINEL - IOT</h3>
-                  <span className="project-badge project-badge-iot">IOT</span>
+                  <h3 className="project-item-title">{t.projects.items[0].title}</h3>
+                  <span className="project-badge project-badge-iot">{t.projects.items[0].badge}</span>
                 </div>
 
                 <p className="project-desc">
-                  Developed an IoT monitoring system to detect fire and gas leaks in real time by integrating sensors, a microcontroller, and a web-based dashboard. Implemented the Sugeno Fuzzy Logic algorithm to process sensor data and enable automated decision-making, improving safety and response to potential hazards.
+                  {t.projects.items[0].desc}
                 </p>
 
                 <div className="project-footer">
@@ -453,15 +428,16 @@ function App() {
               </div>
             </div>
 
+            {/* Project 2: Healty Life */}
             <div className="project-item scroll-reveal">
               <div className="project-info">
                 <div className="project-header-container">
-                  <h3 className="project-item-title">WEBSITE HEALTY LIFE - EDUKASI KESEHATAN</h3>
-                  <span className="project-badge">Website</span>
+                  <h3 className="project-item-title">{t.projects.items[1].title}</h3>
+                  <span className="project-badge">{t.projects.items[1].badge}</span>
                 </div>
 
                 <p className="project-desc">
-                  Developed the Healthy Life website as a health education platform providing information on sleep quality, healthy eating habits, and healthy lifestyle practices. Designed and implemented website features to present educational content in a structured manner, improve users' access to health information, and enhance the overall user experience through an intuitive and informative interface.
+                  {t.projects.items[1].desc}
                 </p>
 
                 <div className="project-footer">
@@ -484,7 +460,7 @@ function App() {
                   </div>
 
                   <a href="#" target="_blank" rel="noopener noreferrer" className="live-demo-badge-inline">
-                    Live Demo <span className="demo-arrow">↗</span>
+                    {t.projects.liveDemo} <span className="demo-arrow">↗</span>
                   </a>
                 </div>
               </div>
@@ -496,7 +472,7 @@ function App() {
               </div>
             </div>
 
-            {/* Project 2: Lokara */}
+            {/* Project 3: Lokara */}
             <div className="project-item visual-left scroll-reveal">
               <div className="project-visual">
                 <div className="project-image-wrapper lokara-wrapper">
@@ -508,12 +484,12 @@ function App() {
 
               <div className="project-info">
                 <div className="project-header-container">
-                  <h3 className="project-item-title">UI/UX MOBILE - LOKARA (LOKAL KARYA INDONESIA)</h3>
-                  <span className="project-badge">Mobile</span>
+                  <h3 className="project-item-title">{t.projects.items[2].title}</h3>
+                  <span className="project-badge">{t.projects.items[2].badge}</span>
                 </div>
 
                 <p className="project-desc">
-                  Designed a UX-driven e-commerce platform to support local businesses in promoting Indonesian cultural products to the international market. Developed an intuitive user journey, from product exploration and information discovery to the purchasing process, improving accessibility and enhancing the user experience in discovering and purchasing Indonesian cultural products.
+                  {t.projects.items[2].desc}
                 </p>
 
                 <div className="project-footer">
@@ -524,22 +500,22 @@ function App() {
                   </div>
 
                   <a href="#" target="_blank" rel="noopener noreferrer" className="live-demo-badge-inline">
-                    Live Demo <span className="demo-arrow">↗</span>
+                    {t.projects.liveDemo} <span className="demo-arrow">↗</span>
                   </a>
                 </div>
               </div>
             </div>
 
-            {/* Project 3: Sanding Solutions */}
+            {/* Project 4: Sanding Solutions */}
             <div className="project-item scroll-reveal">
               <div className="project-info">
                 <div className="project-header-container">
-                  <h3 className="project-item-title">DESIGN UI/UX - PREMIUM INDUSTRIAL SANDING SOLUTIONS</h3>
-                  <span className="project-badge">Website</span>
+                  <h3 className="project-item-title">{t.projects.items[3].title}</h3>
+                  <span className="project-badge">{t.projects.items[3].badge}</span>
                 </div>
 
                 <p className="project-desc">
-                  Designed the Tiaga Pratama Persada company website as a digital platform to showcase grinding material products through comprehensive and informative content. Created an intuitive user interface and implemented a pre-order feature to simplify the ordering process, improve service accessibility, and support the company's digital transformation.
+                  {t.projects.items[3].desc}
                 </p>
 
                 <div className="project-footer">
@@ -550,7 +526,7 @@ function App() {
                   </div>
 
                   <a href="#" target="_blank" rel="noopener noreferrer" className="live-demo-badge-inline">
-                    Live Demo <span className="demo-arrow">↗</span>
+                    {t.projects.liveDemo} <span className="demo-arrow">↗</span>
                   </a>
                 </div>
               </div>
@@ -562,7 +538,7 @@ function App() {
               </div>
             </div>
 
-            {/* Project 4: Pasar Ngalam */}
+            {/* Project 5: Pasar Ngalam */}
             <div className="project-item visual-left scroll-reveal">
               <div className="project-visual">
                 <div className="project-image-wrapper">
@@ -572,12 +548,12 @@ function App() {
 
               <div className="project-info">
                 <div className="project-header-container">
-                  <h3 className="project-item-title">PASAR NGALAM - MARKETPLACE PLATFORM</h3>
-                  <span className="project-badge">Website</span>
+                  <h3 className="project-item-title">{t.projects.items[4].title}</h3>
+                  <span className="project-badge">{t.projects.items[4].badge}</span>
                 </div>
 
                 <p className="project-desc">
-                  Developed a marketplace platform to help local sellers market their products digitally through product management, catalog, and structured database features. Designed an efficient data management system to streamline product entry, organization, and information display while supporting well-organized digital transactions.
+                  {t.projects.items[4].desc}
                 </p>
 
                 <div className="project-footer">
@@ -600,22 +576,22 @@ function App() {
                   </div>
 
                   <a href="#" target="_blank" rel="noopener noreferrer" className="live-demo-badge-inline">
-                    Live Demo <span className="demo-arrow">↗</span>
+                    {t.projects.liveDemo} <span className="demo-arrow">↗</span>
                   </a>
                 </div>
               </div>
             </div>
 
-            {/* Project 5: Waroeng K-conk */}
+            {/* Project 6: Waroeng K-conk */}
             <div className="project-item scroll-reveal">
               <div className="project-info">
                 <div className="project-header-container">
-                  <h3 className="project-item-title">WEBSITE WAROENG K-CONK - UMKM KULINER</h3>
-                  <span className="project-badge">Website</span>
+                  <h3 className="project-item-title">{t.projects.items[5].title}</h3>
+                  <span className="project-badge">{t.projects.items[5].badge}</span>
                 </div>
 
                 <p className="project-desc">
-                  Developed a web platform for Waroeng K-Conk, a culinary local business (UMKM) specializing in authentic bebek bumbu hitam. Designed and implemented website features to display menus, facilitate ordering processes, and showcase culinary offerings to help the business digitalize its operations and reach a wider customer base.
+                  {t.projects.items[5].desc}
                 </p>
 
                 <div className="project-footer">
@@ -638,7 +614,7 @@ function App() {
                   </div>
 
                   <a href="#" target="_blank" rel="noopener noreferrer" className="live-demo-badge-inline">
-                    Live Demo <span className="demo-arrow">↗</span>
+                    {t.projects.liveDemo} <span className="demo-arrow">↗</span>
                   </a>
                 </div>
               </div>
@@ -661,7 +637,7 @@ function App() {
           <div className="tools-card scroll-reveal">
             <div className="tools-content-wrapper">
               <div className="tools-left">
-                <h2 className="tools-title-header">TOOLS<br />SOFTWARE</h2>
+                <h2 className="tools-title-header">{t.tools.title1}<br />{t.tools.title2}</h2>
                 <div className="tools-underline"></div>
                 <div className="tools-dog-wrapper">
                   <img src={dogImg} alt="Coding Dog" className="tools-dog-img" />
@@ -799,7 +775,7 @@ function App() {
       {/* Certification Section */}
       <section id="certification" className="certification-section">
         <div className="certification-inner">
-          <h2 className="certification-title scroll-reveal">CERTIFICATIONS</h2>
+          <h2 className="certification-title scroll-reveal">{t.certifications.title}</h2>
           <div className="certification-divider scroll-reveal"></div>
 
           <div className="certifications-grid">
@@ -808,7 +784,7 @@ function App() {
                 <div className="cert-image-container">
                   <img src={cert.image} alt={cert.title} className="cert-card-img" />
                   <div className="cert-overlay">
-                    <span className="cert-zoom-text">View Certification</span>
+                    <span className="cert-zoom-text">{t.certifications.viewCert}</span>
                   </div>
                 </div>
                 <div className="cert-info">
@@ -830,11 +806,11 @@ function App() {
         <footer id="contact" className="site-footer">
           <div className="footer-container">
             <div className="footer-brand">
-              <span>Derajat.Dev</span>
+              <span>{t.footer.brand}</span>
             </div>
 
             <div className="footer-copyright">
-              <span>&copy; 2026 Derajat-dev. All Rights Reserved.</span>
+              <span>{t.footer.copyright}</span>
             </div>
 
             <div className="footer-socials">
@@ -893,8 +869,8 @@ function App() {
               <h3 className="cert-modal-title">{selectedCert.title}</h3>
               <p className="cert-modal-issuer">{selectedCert.issuer}</p>
               <div className="cert-modal-meta">
-                <span>Year: {selectedCert.date}</span>
-                {selectedCert.id && <span>Credential ID: {selectedCert.id}</span>}
+                <span>{t.certifications.modalYear} {selectedCert.date}</span>
+                {selectedCert.id && <span>{t.certifications.modalCredential} {selectedCert.id}</span>}
               </div>
             </div>
           </div>
