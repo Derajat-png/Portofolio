@@ -67,6 +67,19 @@ import instagramFooterIcon from './assets/Instagram (2).png'
 import { translations } from './translations'
 import './App.css'
 
+const certImages = [
+  certUiux,
+  certUji,
+  certMicrosoft,
+  certHackathon,
+  certIntern,
+  certBem,
+  certHmpsti,
+  certJava,
+  certApply,
+  certUi
+];
+
 function App() {
   const [lang, setLang] = useState(() => {
     return localStorage.getItem('portofolio_lang') || 'en';
@@ -75,9 +88,16 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   const [fadeOut, setFadeOut] = useState(false);
-  const [selectedCert, setSelectedCert] = useState(null);
+  const [selectedCertIndex, setSelectedCertIndex] = useState(null);
 
   const t = translations[lang] || translations.en;
+
+  const certificates = t.certifications.items.map((cert, index) => ({
+    ...cert,
+    image: certImages[index] || certUiux
+  }));
+
+  const selectedCert = selectedCertIndex !== null ? certificates[selectedCertIndex] : null;
 
   const handleLanguageChange = (newLang) => {
     setLang(newLang);
@@ -95,12 +115,12 @@ function App() {
   };
 
   useEffect(() => {
-    if (loading || selectedCert) {
+    if (loading || selectedCertIndex !== null) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
     }
-  }, [loading, selectedCert]);
+  }, [loading, selectedCertIndex]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -148,24 +168,6 @@ function App() {
       elementsToObserve.forEach((el) => observer.unobserve(el));
     };
   }, []);
-
-  const certImages = [
-    certUiux,
-    certUji,
-    certMicrosoft,
-    certHackathon,
-    certIntern,
-    certBem,
-    certHmpsti,
-    certJava,
-    certApply,
-    certUi
-  ];
-
-  const certificates = t.certifications.items.map((cert, index) => ({
-    ...cert,
-    image: certImages[index] || certUiux
-  }));
 
   return (
     <>
@@ -780,7 +782,7 @@ function App() {
 
           <div className="certifications-grid">
             {certificates.map((cert, index) => (
-              <div key={index} className="cert-card-item scroll-reveal" onClick={() => setSelectedCert(cert)}>
+              <div key={index} className="cert-card-item scroll-reveal" onClick={() => setSelectedCertIndex(index)}>
                 <div className="cert-image-container">
                   <img src={cert.image} alt={cert.title} className="cert-card-img" />
                   <div className="cert-overlay">
@@ -861,8 +863,8 @@ function App() {
 
       {/* Certification Zoom Lightbox Modal */}
       {selectedCert && (
-        <div className="cert-modal-overlay" onClick={() => setSelectedCert(null)}>
-          <button className="cert-modal-close" onClick={() => setSelectedCert(null)}>✕</button>
+        <div className="cert-modal-overlay" onClick={() => setSelectedCertIndex(null)}>
+          <button className="cert-modal-close" onClick={() => setSelectedCertIndex(null)}>✕</button>
           <div className="cert-modal-content" onClick={(e) => e.stopPropagation()}>
             <img src={selectedCert.image} alt={selectedCert.title} className="cert-modal-img" />
             <div className="cert-modal-info">
