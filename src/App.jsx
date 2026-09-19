@@ -502,7 +502,7 @@ function App() {
                     </div>
                   </div>
 
-                  <a href="#" target="_blank" rel="noopener noreferrer" className="live-demo-badge-inline">
+                  <a href="https://www.figma.com/design/NoCY0JwCOrLCBq0FME0iaZ/Lokara?node-id=41-3&t=enbmf9uUA622hmtq-1" target="_blank" rel="noopener noreferrer" className="live-demo-badge-inline">
                     {t.projects.liveDemo} <span className="demo-arrow">↗</span>
                   </a>
                 </div>
@@ -663,7 +663,7 @@ function App() {
                     </div>
                   </div>
 
-                  <a href="#" target="_blank" rel="noopener noreferrer" className="live-demo-badge-inline">
+                  <a href="https://hologyfilkom.vercel.app/" target="_blank" rel="noopener noreferrer" className="live-demo-badge-inline">
                     {t.projects.liveDemo} <span className="demo-arrow">↗</span>
                   </a>
                 </div>
