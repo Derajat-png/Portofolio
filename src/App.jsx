@@ -31,6 +31,7 @@ import mysqlLogo from './assets/Mysql.png'
 import javascriptLogo from './assets/Javascript.png'
 import laravelLogo from './assets/laravel.png'
 import projectUmkm from './assets/umkm.png'
+import projectFinancialTwin from './assets/financial.jpeg'
 import projectIot from './assets/IOT.png'
 import tailwindLogo from './assets/Tailwind CSS.png'
 import reactLogo from './assets/react.svg'
@@ -624,6 +625,47 @@ function App() {
               <div className="project-visual">
                 <div className="project-image-wrapper">
                   <img src={projectUmkm} alt="Waroeng K-Conk Website Preview" className="project-image" />
+                </div>
+              </div>
+            </div>
+
+            {/* Project 7: Financial Twin */}
+            <div className="project-item visual-left scroll-reveal">
+              <div className="project-visual">
+                <div className="project-image-wrapper">
+                  <img src={projectFinancialTwin} alt="Website Financial Twin Preview" className="project-image" />
+                </div>
+              </div>
+
+              <div className="project-info">
+                <div className="project-header-container">
+                  <h3 className="project-item-title">{t.projects.items[6].title}</h3>
+                  <span className="project-badge">{t.projects.items[6].badge}</span>
+                </div>
+
+                <p className="project-desc">
+                  {t.projects.items[6].desc}
+                </p>
+
+                <div className="project-footer">
+                  <div className="project-tech-icons">
+                    <div className="tech-icon-wrapper">
+                      <img src={reactLogo} alt="ReactJS" className="tech-icon" />
+                    </div>
+                    <div className="tech-icon-wrapper">
+                      <img src={javascriptLogo} alt="Javascript" className="tech-icon" />
+                    </div>
+                    <div className="tech-icon-wrapper">
+                      <img src={htmlLogo} alt="HTML5" className="tech-icon tech-icon-lg" />
+                    </div>
+                    <div className="tech-icon-wrapper">
+                      <img src={cssLogo} alt="CSS3" className="tech-icon tech-icon-lg" />
+                    </div>
+                  </div>
+
+                  <a href="#" target="_blank" rel="noopener noreferrer" className="live-demo-badge-inline">
+                    {t.projects.liveDemo} <span className="demo-arrow">↗</span>
+                  </a>
                 </div>
               </div>
             </div>

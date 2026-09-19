@@ -91,6 +91,12 @@ export const translations = {
           badgeType: "default",
           desc: "Developed a web platform for Waroeng K-Conk, a culinary local business (UMKM) specializing in authentic bebek bumbu hitam. Designed and implemented website features to display menus, facilitate ordering processes, and showcase culinary offerings to help the business digitalize its operations and reach a wider customer base.",
         },
+        {
+          title: "WEBSITE FINANCIAL TWIN - HOLOGY",
+          badge: "Website",
+          badgeType: "default",
+          desc: "Designed and developed a Financial Twin-based website that helps users analyze their financial condition, make financial decisions, and calculate monthly finances. The website is equipped with various features to provide financial information and simulations to help users plan and manage their finances more effectively.",
+        },
       ],
     },
     tools: {
@@ -263,6 +269,12 @@ export const translations = {
           badge: "Website",
           badgeType: "default",
           desc: "Mengembangkan platform web untuk Waroeng K-Conk, usaha kuliner lokal (UMKM) spesialis bebek bumbu hitam otentik. Merancang dan mengimplementasikan fitur website untuk menampilkan menu, memfasilitasi proses pemesanan, dan menyajikan ragam kuliner guna membantu bisnis mendigitalisasi operasionalnya serta menjangkau pelanggan yang lebih luas.",
+        },
+        {
+          title: "WEBSITE FINANCIAL TWIN - HOLOGY",
+          badge: "Website",
+          badgeType: "default",
+          desc: "Merancang dan mengembangkan website berbasis Financial Twin yang membantu pengguna dalam menganalisis kondisi keuangan, mengambil keputusan finansial, serta menghitung keuangan bulanan. Website dilengkapi dengan berbagai fitur untuk memberikan informasi dan simulasi keuangan guna membantu pengguna dalam merencanakan dan mengelola keuangan secara lebih efektif.",
         },
       ],
     },

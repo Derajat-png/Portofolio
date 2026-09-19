@@ -952,6 +952,13 @@
   object-fit: contain;
 }
 
+/* Penyesuaian ukuran optik untuk logo HTML & CSS agar seimbang dengan logo JS & React */
+.tech-icon-lg,
+.tech-icon-html,
+.tech-icon-css {
+  height: 52px;
+}
+
 .project-visual {
   display: flex;
   justify-content: center;
