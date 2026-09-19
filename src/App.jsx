@@ -528,7 +528,7 @@ function App() {
                     </div>
                   </div>
 
-                  <a href="#" target="_blank" rel="noopener noreferrer" className="live-demo-badge-inline">
+                  <a href="https://www.figma.com/design/CkWbqFAkizfmAMYMWDKdCM/Untitled?node-id=0-1&t=QSQd64PwieEo8hGY-1" target="_blank" rel="noopener noreferrer" className="live-demo-badge-inline">
                     {t.projects.liveDemo} <span className="demo-arrow">↗</span>
                   </a>
                 </div>
